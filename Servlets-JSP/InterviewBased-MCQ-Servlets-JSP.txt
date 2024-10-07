@@ -1,0 +1,553 @@
+
+=============================================================[  MCQ  ]======================================================================
+InterviewBased-MCQ-    [Servlets - JSP]
+1)
+Which of the following tags is used to execute java source code in JSP?
+a) Declaration Tag
+b) Scriptlet tag
+c) Expression tag
+d) None of the above
+Answer : b
+-------------------------------------
+2)
+Which one of the following is correct syntax for a directive in JSP?
+a) <%!directive%>
+b) <%directive%>
+c) <%=directive%>
+d) <%@directive%>
+Answer : d
+-------------------------------------
+3)
+Which of the following is the correct order of phases in the JSP life cycle?
+a) Compilation, Initialization, Execution, Cleanup
+b) Cleanup, Compilation, Initialization, Execution
+c) Initialization, Cleanup, Compilation, Execution
+d) Initialization, Compilation, Cleanup, Execution
+
+Answer : a
+
+-------------------------------------
+4)
+The dynamic interception of requests and responses to transform the information is done by which of the following?
+a) Servlet filter
+b) Servlet config
+c) Servlet context
+d) Servlet container
+Answer : a
+-------------------------------------
+5)
+Which of the following JSP Life-Cycle methods can be overridden?
+a) jspInit()
+b) jspDestroy()
+c) Both (a) and (b)
+d) None of the above
+
+Answer : c
+-------------------------------------
+6) 
+What is a servlet in Java? 
+a) A programming language 
+b) A scripting language 
+c) A server-side technology for Java web applications 
+d) A database management system 
+
+ANS: c) A server-side technology/API for Java web applications. 
+Explanation:
+
+A servlet is a Java class that extends the functionality of a web server and handles client requests and generates dynamic responses. 
+-------------------------------------
+7) 
+Which interface must a Java class implement to create a servlet? 
+a) Servlet
+b) HttpServlet 
+c) ServletConfig 
+d) ServletRequest 
+
+ANS: a) Servlet. 
+Explanation:
+
+To create a servlet, a Java class must implement the Servlet interface. However, it is more common to extend the HttpServlet class, which provides additional functionality for handling HTTP requests. 
+-------------------------------------
+8) 
+Which HTTP method is used to retrieve data from a server using a servlet? 
+a) GET 
+b) POST 
+c) PUT 
+d) DELETE 
+
+ANS: a) GET. 
+Explanation:
+
+The GET method is used to retrieve data from a server using a servlet. It is commonly used for fetching data or rendering web pages. 
+-------------------------------------
+9) 
+Which of the following is true about servlet containers? 
+a) They are used to compile servlets into bytecode 
+b) They are responsible for managing the lifecycle of servlets 
+c) They are part of the Java Development Kit (JDK) 
+d) They are used for storing servlet-related data
+
+ANS: b) They are responsible for managing the lifecycle of servlets.  
+Explanation:
+
+Servlet containers, also known as servlet engines or web containers, are responsible for managing the lifecycle of servlets, handling requests, and providing various services to servlets. 
+-------------------------------------
+10) 
+Which method in the HttpServlet class is used to handle HTTP GET requests? 
+a) doGet() 
+b) doPost() 
+c) service() 
+d) init() 
+a) doGet(). 
+
+ANS: a
+Explanation:
+
+The doGet() method in the HttpServlet class is used to handle HTTP GET requests. It is where you can write the code to process and respond to GET requests. 
+-------------------------------------
+11) 
+Which object provides information about the client's request to a servlet? 
+a) ServletConfig 
+b) HttpServletRequest 
+c) HttpServletResponse 
+d) ServletContext 
+ANS: b) HttpServletRequest. 
+Explanation:
+
+The HttpServletRequest object provides information about the client's request to a servlet, including parameters, headers, cookies, and more.
+-------------------------------------
+12) 
+What is the purpose of the web.xml file in a servlet-based web application? 
+a) To define the HTML structure of web pages 
+b) To configure the servlet container and servlet mappings 
+c) To store client-side JavaScript code 
+d) To define the database schema 
+ANS: b) To configure the servlet container and servlet mappings.
+Explanation: 
+
+The web.xml file is an XML-based configuration file used to configure the servlet container and define servlet mappings, initialization parameters, security constraints, and more in a servlet-based web application. 
+-------------------------------------
+13)
+Which of the following is true about servlet threading? 
+a) Each servlet instance runs in a separate thread 
+b) All servlet instances run in the same thread 
+c) Servlets do not support multithreading 
+d) Servlets always run in parallel threads 
+ANS: a) Each servlet instance runs in a separate thread. 
+Explanation:
+
+Servlets are multithreaded, meaning that each request to a servlet typically runs in a separate thread. This allows concurrent handling of multiple client requests. 
+-------------------------------------
+14)
+How can a servlet send data back to the client? 
+a) By calling the forward() method 
+b) By using the println() method of the PrintWriter class 
+c) By invoking the getRequestDispatcher() method 
+d) By setting response headers 
+ANS: b) By using the println() method of the PrintWriter class. 
+Explanation:
+
+A servlet can send data back to the client by writing the response content using the PrintWriter object obtained from the HttpServletResponse object and its println() method.
+-------------------------------------
+15)
+Which of the following is NOT a valid method to initialize a servlet? 
+a) Using the init() method 
+b) Using the @WebServlet annotation 
+c) Using the web.xml deployment descriptor 
+d) Using the doGet() method
+ANS: d) Using the doGet() method. 
+Explanation:
+
+The doGet() method is used to handle HTTP GET requests, not for initializing a servlet. Servlet initialization can be done using the init() method, @WebServlet annotation, or web.xml deployment descriptor.
+-------------------------------------
+16)
+Which object is used to obtain initialization parameters in a servlet? 
+a) ServletConfig 
+b) HttpServletRequest 
+c) HttpServletResponse 
+d) ServletContext 
+ANS: a) ServletConfig. 
+Explanation:
+
+The ServletConfig object provides access to the initialization parameters configured for a servlet. These parameters are specified in the web.xml file or through annotations.
+-------------------------------------
+17)
+What is the purpose of the doPost() method in a servlet? 
+a) To handle HTTP POST requests 
+b) To initialize the servlet 
+c) To handle HTTP GET requests 
+d) To forward the request to another resource 
+ANS: a) To handle HTTP POST requests. 
+Explanation:
+
+The doPost() method is used to handle HTTP POST requests. It is where you can write the code to process and respond to POST requests.
+-------------------------------------
+18)
+Which method is used to include the content of another resource during servlet processing? 
+a) include() 
+b) import() 
+c) use() 
+d) forward() 
+ANS: a) include(). 
+Explanation:
+
+The include() method is used to include the content of another resource, such as another servlet or JSP page, during servlet processing. It allows the content of the included resource to be merged with the current servlet response. 
+-------------------------------------
+19)
+Which servlet API method is called before a servlet instance is removed from memory? 
+a) init() 
+b) destroy() 
+c) service() 
+d) doGet() 
+
+ANS: b) destroy(). 
+
+Explanation:
+The destroy() method is called before a servlet instance is destroyed. It allows for performing cleanup tasks and releasing any resources held by the servlet. 
+-------------------------------------
+20)
+What is the purpose of the ServletContext object? 
+a) To hold client session information 
+b) To process client requests 
+c) To manage the lifecycle of servlet instances 
+d) To provide a shared context for servlets within a web application 
+
+ANS: d) To provide a shared context for servlets within a web application. 
+
+Explanation:
+The ServletContext object represents the servlet context, which provides a shared context for servlets within a web application. It allows servlets to share data and communicate with each other. 
+-------------------------------------
+21)
+What is the purpose of the RequestDispatcher interface in a servlet? 
+a) To handle HTTP request headers 
+b) To retrieve client cookies 
+c) To forward or include requests to other resources 
+d) To manage servlet configuration settings 
+
+ANS: Answer: 
+
+c) To forward or include requests to other resources. 
+
+Explanation:
+The RequestDispatcher interface is used to forward or include requests to other resources, such as servlets, JSP pages, or static files. 
+-------------------------------------
+22)
+Which of the following is NOT a valid method of session tracking in servlets? 
+a) Cookies 
+b) URL rewriting 
+c) Hidden form fields 
+d) Query parameters 
+
+ANS: d) Query parameters. 
+
+Explanation:
+
+Query parameters are not a valid method of session tracking in servlets. Session tracking is typically achieved through mechanisms such as cookies, URL rewriting, or hidden form fields. 
+-------------------------------------
+23)
+What is the purpose of the ServletResponse object in a servlet? 
+a) To handle client requests 
+b) To obtain initialization parameters 
+c) To store session data 
+d) To send data back to the client 
+ANS: d) To send data back to the client. 
+
+Explanation:
+
+The ServletResponse object represents the response that a servlet sends back to the client. It provides methods to set response headers, write content for the response, and manage cookies. 
+-------------------------------------
+24) 
+Which Java package provides the classes and interfaces for servlets? 
+a) java.net 
+b) java.io 
+c) javax.servlet 
+d) java.lang
+
+ANS: c) javax.servlet. 
+
+Explanation:
+
+The javax.servlet package provides the classes and interfaces for servlets. It includes important classes such as Servlet, HttpServlet, HttpServletRequest, HttpServletResponse, and more.
+-------------------------------------
+25)
+Which cookie is valid for single session only and it is removed each time when the user closes the browser?
+a. Persistent cookie
+b. Non-persistent cookie
+c. All the above
+d. None of the above
+ANS: b
+-------------------------------------
+26)
+HttpSession is a part of the SessionTracking and it is used for maintaining the client state at server side.
+a. True
+b. False
+ANS: a
+-------------------------------------
+27)
+Web server is used for loading the init() method of servlet.
+a. True
+b. False
+ANS: a
+-------------------------------------
+28)
+Servlets handle multiple simultaneous requests by using threads.
+a. True
+b. False
+ANS: a
+-------------------------------------
+29)
+Which method is used to send the same request and response objects to another servlet in RequestDispacher ?
+a. forward()
+b. sendRedirect()
+c. Both A & B
+d. None of the above
+ANS: a
+-------------------------------------
+30)
+Which packages represent interfaces and classes for servlet API?
+a. javax.servlet
+b. javax.servlet.http
+c. Both A & B
+d. None of the above
+ANS: c
+-------------------------------------
+31)
+Which class can handle any type of request so that it is protocol-independent?
+a. GenericServlet
+b. HttpServlet
+c. Both A & B
+d. None of the above
+ANS: a
+-------------------------------------
+32)
+Which HTTP Request method is non-idempotent?
+a. GET
+b. POST
+c. BOTH A & B
+d. None of the above
+ANS: b
+-------------------------------------
+33)
+Which object is created by the web container at time of deploying the project?
+a. ServletConfig
+b. ServletContext
+c. Both A & B
+d. None of the above
+ANS: b
+-------------------------------------
+34)
+Which of the following JSP Life-Cycle methods can be overridden?
+a) jspInit()
+b) jspDestroy()
+c) Both (a) and (b)
+d) None of the above
+ANS : c
+-------------------------------------
+35)
+The dynamic interception of requests and responses to transform the information is done by which of the following?
+a) Servlet filter
+b) Servlet config
+c) Servlet context
+d) Servlet container
+ANS : a
+-------------------------------------
+36)
+Which of the following is the correct order of phases in the JSP life cycle?
+a) Compilation, Initialization, Execution, Cleanup
+b) Cleanup, Compilation, Initialization, Execution
+c) Initialization, Cleanup, Compilation, Execution
+d) Initialization, Compilation, Cleanup, Execution
+
+ANS : a
+-------------------------------------
+37)
+Which one of the following is correct for a directive in JSP?
+a) <%!directive%>
+b) <%directive%>
+c) <%=directive%>
+d) <%@directive%>
+
+ANS: d
+-------------------------------------
+38)
+Which of the following tags is used to execute java source code in JSP?
+a) Declaration Tag
+b) Scriptlet tag
+c) Expression tag
+d) None of the above
+ANS: b
+-------------------------------------
+39)
+Which object of HttpSession can be used to view and manipulate information about a session?
+
+a. session identifier
+b. creation time
+c. last accessed time
+d. All mentioned above
+ANS: d
+-------------------------------------
+40)
+Which method is used to send the same request and response objects to another servlet in RequestDispacher ?
+
+
+a. forward()
+b. sendRedirect()
+c. Both A & B
+d. None of the above
+
+ANS: a
+-------------------------------------
+41)
+Which packages represent interfaces and classes for servlet API?
+a. javax.servlet
+b. javax.servlet.http
+c. Both A & B
+d. None of the above
+
+ANS: c
+-------------------------------------
+42)
+Which class can handle any type of request so that it is protocol-independent?
+a. GenericServlet
+b. HttpServlet
+c. Both A & B
+d. None of the above
+
+ANS: a
+-------------------------------------
+43)
+Which of the following method can be used to get complete list of all parameters in the current request?
+
+a. request.getParameter()
+b. request.getParameterValues()
+c. request.getParameterNames()
+d.  None of the above.
+ANS: c
+-------------------------------------
+44)
+Which of the following code is used to get names of the headers in servlet?
+
+a. response.getHeaderNames()
+b. request.getHeaderNames()
+c. Header.getHeaderNames()
+d. None of the above.
+ANS: b
+-------------------------------------
+45)
+Which of the following code retrieves the value of a request parameter?
+
+a. Header.getParameter(name)
+b. response.getParameter(name)
+c. request.getParameter(name)
+d. None of the above.
+
+ANS: c
+-------------------------------------
+46)
+ Which of the following code encodes the specified URL for use in the sendRedirect method?
+
+a. response.encodeRedirectURL(url)
+b. request.encodeRedirectURL(url)
+c. Header.encodeRedirectURL(url)
+d. None of the above.
+ANS: a
+-------------------------------------
+47)
+Which of the following code can be used to clear any data that exists in the buffer as well as the status code and headers?
+
+a. request.reset()
+b. response.reset()
+c. response.resetBuffer()
+d. None of the above.
+ANS: b
+-------------------------------------
+48)
+What is media type of JSP?
+a. application/jsp
+b. text/javax
+c. java/jsp
+d. java/text
+
+ANS: a
+-------------------------------------
+49)
+What is default value of autoFlush attribute in JSP?
+a. True
+b. Null
+c. False
+d. None
+ANS: a
+-------------------------------------
+50)
+In JSP config is instance of which class?
+a. javax.servlet.ServletContext
+b. javax.servlet.ServletConfig
+c. javax.servlet.Context
+d. javax.servlet.Application
+ANS: b
+-------------------------------------
+51)
+What is Full form of JSTL?
+a. JSP Tag Library
+b. JavaServer Pages Standard Tag Library
+c. Java Standard Tag Library
+d. None of the above.
+ANS: b JavaServer Pages Standard Tag Library is the full form of JSTL.
+-------------------------------------
+52)
+ “request” is instance of which one of the following classes?
+a. HttpRequest
+b. Request
+c. HttpServletRequest
+d. ServletRequest
+ANS: c
+-------------------------------------
+53)
+ Which of the following action variable is used to include a file in JSP?
+a. jsp:getProperty
+b. jsp:include
+c. jsp:setProperty
+d. jsp:plugin
+ANS: b
+-------------------------------------
+54)
+Arrange in correct sequence of JSP life cycle.
+
+1. Instantiation
+2. Request processing
+3. Initialization
+4. Classloading
+5. Compilation of JSP Page
+6. Destroy
+7. Translation of JSP Page
+
+a. 7-5-4-1-3-2-6
+b. 6-5-4-1-3-2-7
+c. 1-5-4-7-3-2-6
+d. 7-5-4-3-1-2-6
+
+ANS :a
+-------------------------------------
+55)
+Which of the following is correct about JSP?
+
+1. JSP page is translated into Servlet.
+2. JSP translator is a part of the web server which is responsible for translating the JSP page into Servlet.
+
+a. only 1
+b. only 2
+c. Both 1 & 2
+d. None
+
+Ans c.
+-------------------------------------
+56)
+Request processing of JSP is done by calling which method?
+a. jspInit()
+b. _jspService()
+c. jspDestroy()
+d. _jspRequest()
+
+Ans: b
+-------------------------------------
+======================================================================================UPTO THIS UPLOADED=============================================

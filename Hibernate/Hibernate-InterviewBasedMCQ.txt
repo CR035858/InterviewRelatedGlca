@@ -1,0 +1,831 @@
+
+
+-----------------------------------------------------------------------------------------
+1)
+Which among the below do not belong to the core interface of Hibernate?
+a) SessionManagement
+b) Configuration
+c) Session
+d) Criteria
+Ans: a
+-----------------------
+2) 
+Which method returns the proxy object?
+a) getDatabase()
+b) get()
+c) loadDatabase()
+d) load()
+Ans: d
+-----------------------
+3)
+Which of the following method is used inside sessions only?
+a) end()
+b) merge()
+c) update()
+d) kill()
+Ans: c
+-----------------------
+4)
+Hibernate uses PersisterClassProvider by default.
+a) True
+b) False
+c) There is no such class named PersisterClassProvider
+d) Nothing is set by default
+Ans: a
+-----------------------
+5)
+Which among the below is held by the Session object?
+a) First Level Cache
+b) Second Level Cache
+c) Both First and Second Level Cache
+d) None of the above
+Ans: a
+-----------------------
+6)
+What holds the second level cache as per the Hibernate architecture?
+a) Session
+b) SessionFactory
+c) Connection
+d) Transaction
+Ans: b
+-----------------------
+7)
+Which method among the following options hits the database always?
+a) getDatabase()
+b) load()
+c) get()
+d) loadDatabase()
+Ans: c
+-----------------------
+8)
+What ORM stands for?
+A) Object Relation Map
+B) Object Relational Mapping
+C) Object Record Mapping
+D) None of these
+ANS: B) Object Relational Mapping
+-----------------------
+9)
+Which of the following is true about Transaction object in hibernate?
+A) A Transaction represents a unit of work with the database.
+B) Transactions in Hibernate are handled by an underlying transaction manager.
+C) This is an optional object and Hibernate applications may choose not to use this interface, instead managing transactions in their own application code.
+D) All of the above
+ANS: D
+----------------
+10)
+Which method is used to update the state of the given instance from the underlying database?
+A) Session.store()
+B) Session.keep()
+C) Session.update()
+D) Session.load()
+ANS : C
+------------
+11)
+What is second-level cache in hibernate?
+A) The second-level cache is the Session based cache.
+B) The second-level cache is the Session-factory based cache and is mainly responsible for caching objects across sessions.
+C) Both A and B
+D) None of these
+ANS: B
+---------------
+12)
+Which of the following database is not supported by Hibernate?
+A) Oracle
+B) Microsoft SQL Server Database
+C) FoundationDB 
+D) Informix Dynamic Server
+ANS: C
+--------------
+13)
+Which of the following database is not supported by Hibernate?
+A) Oracle
+B) Microsoft SQL Server Database
+C) FoundationDB 
+D) Informix Dynamic Server
+ANS: C
+-------------
+14)
+Which of the following is true about @Column annotation?
+A) The @Column annotation is applied on a class.
+B) The @Column annotation is used to specify the details of the column to which a field or property will be mapped.
+C) Both A and B
+D) None of these
+ANS: B
+-------------
+15)
+Select the inheritance model which is NOT available in Hibernate.
+A) Tables Per Concrete Class
+B) Table Per sub-class
+C) Table Per class hierarchy
+D) Table Per Object 
+ANS: D
+-----------------
+16)
+Which of the following are the most common configuration methods of Hibernate configuration?
+A) XML Configuration hibernate.cfg.xml
+B) Mapping files and XML Configuration hibernate.cfg.xml
+C) web.config
+D) http.conf
+ANS: B
+----------------
+17)
+Which of the following is true about the transient state of a persistent entity?
+A) A new instance of a persistent class which is not associated with a Session
+B) A new instance of a persistent class which has no representation in the database
+C) A new instance of a persistent class which has no identifier value
+D) All of the above 
+ANS: D
+---------------
+18)
+Which of the following are tags of hibernate.cfg.xml?
+A) SQL variant to generate
+B) DTD
+C) JDBC connection
+D) All of these 
+ANS: D
+----------------
+19)
+To persist collections of embeddable type hibernates uses:
+A) OneToMany
+B) ElementCollection
+C) Both A and B
+D) None of these
+ANS: B
+-----------------
+20)
+Select the design pattern that should be followed while creating SessionFactory in hibernate?
+A) Singleton
+B) Prototype 
+C) Both A and B
+D) None of these
+ANS: A
+--------------
+21)
+How many layers are available in Hibernate architecture?
+A) 3 
+B) 5
+C) 4
+D) 2
+ANS: A
+------------
+22)
+Which of the following is not a Session method?
+A) Session.save()
+B) Session.saveorupdate()
+C) Session.remove() 
+D) Session.persist()
+ANS: C
+---------------
+23)
+In the elements of Hibernate architecture is a factory of session and client of ConnectionProvider, It holds second-level cache (optional) of data?
+A) Connection Provider
+B) Session Factory 
+C) Session
+D) Transaction
+ANS: B
+--------------
+24)
+HQL stands for -
+A) Hibernate Queue Language
+B) Hibernate Query Language 
+C) Hypertext Query Language
+D) HighSpeed Query Language.
+ANS: B
+---------------
+25)
+Which of the following methods returns a proxy object in Hibernate?
+A) getDatabase()
+B) loadDatabase()
+C) loadAsyc()
+D) load() 
+ANS: D
+----------------------
+26)
+_______________is not a core interface of Hibernate.
+A) SessionManagement 
+B) Configuration
+C) Session
+D) Criteria
+ANS: A
+---------------------
+27)
+The database table configuration is stored in ______________ file.
+A) .sql
+B) .ora
+C) .dbm
+D) .hbm 
+ANS: D
+-------------
+28)
+Which property is used to enable auto-commit for JDBC pooled connections?
+A) hibernate.hbm2ddl.auto
+B) hibernate.connection.autocommit 
+C) hibernate.connect.hbm
+D) None of these
+ANS: B
+-----------------
+29)
+Which of the following is true about Hibernate?
+A) It is a Java-based ORM framework
+B) It is a database management system
+C) It is a programming language
+D) It is a web server
+
+ANS: A) It is a Java-based ORM framework
+Explanation: Hibernate is an open-source object-relational mapping (ORM) framework for the Java programming language. It provides a framework for mapping an object-oriented domain model to a traditional relational database.
+-----------------------
+30)
+What is the purpose of Hibernate SessionFactory?
+A) To manage the persistence of objects
+B) To create and manage database connections
+C) To map Java objects to database tables
+D) To execute database queries
+
+ANS: B) To create and manage database connections
+Explanation: The Hibernate SessionFactory is responsible for creating and managing database connections. It is a thread-safe, immutable cache of compiled mappings for a single database. Once created, the SessionFactory should be kept for the lifetime of the application.
+------------------------------------------
+31)
+What is the Hibernate Query Language (HQL)?
+A) A programming language used to write Hibernate code
+B) A database query language used by Hibernate to interact with the database
+C) A language used to define database schema
+D) A language used to define Java objects
+
+ANS: B) A database query language used by Hibernate to interact with the database
+Explanation: Hibernate Query Language (HQL) is an object-oriented query language that is used to interact with a database. It is similar to SQL, but it operates on persistent objects rather than tables. HQL is used to retrieve and manipulate data from a database using Hibernate.
+-----------------------------------
+32)
+What is the purpose of Hibernate Criteria API?
+A) To write complex queries in HQL
+B) To map Java objects to database tables
+C) To create and manage database connections
+D) To query the database using a programmatic approach
+
+ANS: D) To query the database using a programmatic approach
+Explanation: Hibernate Criteria API is a programmatic approach to querying the database using Hibernate. It allows developers to build up a query using a fluent API rather than writing HQL or SQL statements directly. This can make queries easier to read and write, especially for complex queries.
+-----------------------------------
+33)
+What is the purpose of Hibernate Session?
+A) To create and manage database connections
+B) To execute database queries
+C) To map Java objects to database tables
+D) To manage the persistence of objects
+
+ANS: D) To manage the persistence of objects
+Explanation: The Hibernate Session is responsible for managing the persistence of objects. It provides a way to interact with the database by storing and retrieving objects. The Session acts as a transactional boundary, so changes made to objects within a Session are not persisted until the Session is flushed or closed.
+-----------------------------------
+34)
+What is the purpose of Hibernate caching?
+A) To improve the performance of database queries
+B) To reduce the number of database connections
+C) To improve the security of database connections
+D) To manage the persistence of objects
+
+ANS: A) To improve the performance of database queries
+Explanation: Hibernate caching is used to improve the performance of database queries by reducing the number of database calls. It stores frequently accessed data in memory, so it can be retrieved more quickly. There are several levels of caching in Hibernate, including first-level cache, second-level cache, and query cache.
+-----------------------------------
+35)
+What is the difference between first-level and second-level cache in Hibernate?
+A) First-level cache is a local cache while second-level cache is a shared cache
+B) First-level cache is a shared cache while second-level cache is a local cache
+C) First-level cache stores individual objects while second-level cache stores collections
+D) First-level cache is used for read operations while second-level cache is used for both read and write operations
+
+ANS: A) First-level cache is a local cache while second-level cache is a shared cache
+Explanation: The first-level cache in Hibernate is a local cache that is associated with a particular Session. It stores individual objects that have been retrieved from the database. The second-level cache is a shared cache that is associated with a SessionFactory. It stores data that is shared across Sessions, such as collections and query results.
+-----------------------------------
+36)
+What is lazy loading in Hibernate?
+A) A technique used to improve the performance of database queries
+B) A technique used to reduce the number of database connections
+C) A technique used to delay the loading of data until it is needed
+D) A technique used to manage the persistence of objects
+
+ANS:  C) A technique used to delay the loading of data until it is needed
+Explanation: Lazy loading is a technique used in Hibernate to delay the loading of data until it is actually needed. It can improve performance by avoiding the retrieval of unnecessary data from the database. Lazy loading is especially useful for loading large collections of objects or objects with many associations.
+-----------------------------------
+37)
+What is the purpose of Hibernate annotations?
+A) To map Java objects to database tables
+B) To write complex queries in HQL
+C) To manage the persistence of objects
+D) To query the database using a programmatic approach
+
+ANS: A) To map Java objects to database tables
+Explanation: Hibernate annotations are used to map Java objects to database tables. They provide a way to specify the mapping between Java classes and database tables, columns, and relationships. Annotations can be used instead of or in addition to XML mapping files.
+-----------------------------------
+38)
+What is the difference between @ManyToOne and @OneToMany annotations in Hibernate?
+A) @ManyToOne is used to define a many-to-one relationship while @OneToMany is used to define a one-to-many relationship
+B) @ManyToOne is used to define a one-to-many relationship while @OneToMany is used to define a many-to-one relationship
+C) @ManyToOne is used for lazy loading while @OneToMany is used for eager loading
+D) @ManyToOne is used for primary keys while @OneToMany is used for foreign keys
+
+ANS: A) @ManyToOne is used to define a many-to-one relationship while @OneToMany is used to define a one-to-many relationship
+Explanation: The @ManyToOne annotation is used to define a many-to-one relationship between two entities. It is typically used to define the side of the relationship that contains the foreign key. The @OneToMany annotation is used to define a one-to-many relationship between two entities. It is typically used to define the side of the relationship that contains the collection of related objects.
+-----------------------------------
+39)
+What is the purpose of @EmbeddedId annotation in Hibernate?
+A) To define a composite primary key
+B) To map a Java object to a database table
+C) To define a one-to-many relationship
+D) To enable lazy loading of a relationship
+
+ANS: A) To define a composite primary key
+Explanation: The @EmbeddedId annotation is used to define a composite primary key for an entity. It is typically used when a primary key consists of multiple columns in a database table. The composite primary key is represented as a separate object in the entity class.
+-----------------------------------
+40)
+What is the purpose of @Transactional annotation in Hibernate?
+A) To define a transactional boundary for a method
+B) To enable lazy loading of a relationship
+C) To define a one-to-many relationship
+D) To map a Java object to a database table
+
+ANS: A) To define a transactional boundary for a method
+Explanation: The @Transactional annotation is used to define a transactional boundary for a method. It is typically used to ensure that a method executes within a transactional context. If an exception is thrown during the execution of the method, the transaction is rolled back.
+-----------------------------------
+41)
+What is the purpose of Hibernate Criteria API?
+A) To write complex queries in HQL
+B) To enable lazy loading of a relationship
+C) To map a Java object to a database table
+D) To programmatically construct queries in Java
+
+ANS:  D) To programmatically construct queries in Java
+Explanation: Hibernate Criteria API is used to programmatically construct queries in Java. It provides a type-safe and object-oriented approach to building queries. The Criteria API is useful when dynamic queries are required or when the query is complex and difficult to express in HQL.
+-----------------------------------
+42)
+What is the difference between Eager Loading and Lazy Loading in Hibernate?
+A) Eager Loading loads all associated objects upfront while Lazy Loading loads associated objects on demand
+B) Eager Loading loads associated objects on demand while Lazy Loading loads all associated objects upfront
+C) Eager Loading and Lazy Loading are the same thing
+D) Eager Loading and Lazy Loading are both used for primary keys
+
+ANS:  A) Eager Loading loads all associated objects upfront while Lazy Loading loads associated objects on demand
+Explanation: Eager Loading is a strategy in Hibernate where all associated objects are loaded upfront. This can result in poor performance if there are many associated objects. Lazy Loading, on the other hand, is a strategy where associated objects are loaded on demand. This can improve performance by avoiding the retrieval of unnecessary data from the database.
+-----------------------------------
+43)
+What is the purpose of Hibernate Query Language (HQL)?
+A) To map a Java object to a database table
+B) To write complex queries in Java
+C) To query the database using a programmatic approach
+D) To write complex queries in Hibernate using an object-oriented syntax
+
+ANS: D) To write complex queries in Hibernate using an object-oriented syntax
+Explanation: Hibernate Query Language (HQL) is a language that is used to write complex queries in Hibernate using an object-oriented syntax. HQL queries are similar to SQL queries but are written using Java objects and properties rather than database tables and columns.
+-----------------------------------
+44)
+What is the purpose of the @SequenceGenerator annotation in Hibernate?
+A) To define a sequence for generating primary keys
+B) To map a Java object to a database table
+C) To define a one-to-many relationship
+D) To enable lazy loading of a relationship
+
+ANS:A) To define a sequence for generating primary keys
+Explanation: The @SequenceGenerator annotation is used to define a sequence for generating primary keys. It is typically used when a database does not provide an auto-incrementing primary key. The sequence is used to generate unique values for the primary key column.
+-----------------------------------
+45)
+What is the purpose of the Hibernate SessionFactory?
+A) To manage Hibernate Sessions
+B) To map Java objects to database tables
+C) To provide a connection to the database
+D) To enable lazy loading of a relationship
+
+ANS: A) To manage Hibernate Sessions
+Explanation: The Hibernate SessionFactory is used to manage Hibernate Sessions. It is typically created once for an application and is used to create new Sessions as needed. The SessionFactory manages the configuration of Hibernate and provides a cache for shared data.
+-----------------------------------
+46)
+What is the purpose of the @GeneratedValue annotation in Hibernate?
+A) To generate primary keys automatically
+B) To map a Java object to a database table
+C) To define a one-to-many relationship
+D) To enable lazy loading of a relationship
+
+ANS: A) To generate primary keys automatically
+
+Explanation: The @GeneratedValue annotation is used to generate primary keys automatically. It is typically used with the @Id annotation to specify how primary keys are generated. The @GeneratedValue annotation supports several different strategies for generating primary keys, including using a database sequence or an internal Hibernate sequence.
+-----------------------------------
+47)
+What is the purpose of Hibernate caching?
+A) To improve the performance of queries by reducing the number of database calls
+B) To map a Java object to a database table
+C) To define a one-to-many relationship
+D) To enable lazy loading of a relationship
+
+ANS: A) To improve the performance of queries by reducing the number of database calls
+
+Explanation: Hibernate caching is used to improve the performance of queries by reducing the number of database calls. Hibernate uses two levels of caching: first-level caching and second-level caching. First-level caching is used to cache objects within a Session, while second-level caching is used to cache objects across multiple Sessions.
+-----------------------------------
+48)
+What is the purpose of the Hibernate Session?
+A) To manage the persistence of objects to the database
+B) To map a Java object to a database table
+C) To define a one-to-many relationship
+D) To enable lazy loading of a relationship
+
+ANS:A) To manage the persistence of objects to the database
+
+Explanation: The Hibernate Session is used to manage the persistence of objects to the database. It is created from a SessionFactory and is used to save, update, and delete objects. The Session also provides a cache for storing persistent objects, and supports transactions to ensure data consistency.
+-----------------------------------
+49)
+What is Hibernate? 
+a) A programming language 
+b) A database management system 
+c) An object-relational mapping (ORM) framework 
+d) A scripting language 
+ANS: c) An object-relational mapping (ORM) framework. 
+Explanation:
+Hibernate is an ORM framework that provides a way to map Java objects to relational database tables, simplifying database interaction in Java applications. 
+-----------------------------------
+50)
+Which of the following is true about Hibernate? 
+a) It is specific to a particular database management system 
+b) It provides a way to define database schemas 
+c) It simplifies object-oriented programming in Java 
+d) It is primarily used for front-end web development 
+ANS: 
+c)It simplifies object-oriented programming in Java. 
+
+Explanation:
+Hibernate simplifies database access by abstracting away the complexities of JDBC (Java Database Connectivity) and providing an object-oriented approach to interacting with databases. 
+-----------------------------------
+51) What is the purpose of Hibernate's SessionFactory? 
+a) To create and manage database connections 
+b) To define database schemas 
+c) To provide a mapping between Java classes and database tables 
+d) To handle database transactions 
+ANS:  
+a) To create and manage database connections. 
+
+Explanation:
+The SessionFactory in Hibernate is responsible for creating and managing database connections. It is used to configure Hibernate settings and create sessions for performing database operations. 
+-----------------------------------
+52) Which configuration file is used to configure Hibernate settings? 
+a) hibernate.cfg.xml 
+b) web.xml 
+c) persistence.xml 
+d) application.properties 
+ANS: 
+a) hibernate.cfg.xml. 
+
+Explanation:
+The hibernate.cfg.xml configuration file is used to configure Hibernate settings, such as database connection details, dialect, mapping files, and other properties required for Hibernate to work correctly.
+-----------------------------------
+53) What is the purpose of Hibernate's Session object? 
+a) To execute SQL queries 
+b) To perform database CRUD operations 
+c) To manage database transactions 
+d) To define Hibernate entity mappings
+ANS:  
+c) To manage database transactions. 
+
+Explanation:
+The Session object in Hibernate represents a single unit of work and is responsible for managing database transactions. It provides methods for performing CRUD (Create, Read, Update, Delete) operations on entities. 
+-----------------------------------
+54) What is the default primary key generation strategy provided by Hibernate? 
+a) AUTO 
+b) IDENTITY 
+c) SEQUENCE 
+d) TABLE 
+ANS: 
+a) AUTO.
+
+Explanation:
+The AUTO primary key generation strategy allows Hibernate to choose the appropriate strategy based on the underlying database. It typically uses identity columns, sequences, or table-based strategies for generating primary keys. 
+-----------------------------------
+55) Which annotation is used to specify the primary key in a Hibernate entity class? 
+a) @PrimaryKey
+b) @Id 
+c) @GeneratedValue 
+d) @Key  
+ANS: 
+b) @Id. 
+
+Explanation:
+The @Id annotation is used to specify the primary key in a Hibernate entity class. It marks a field or a property as the identifier of the entity. 
+-----------------------------------
+56) What is the purpose of Hibernate's HQL (Hibernate Query Language)?
+a) To define database schemas 
+b) To create Java objects from database tables 
+c) To perform database CRUD operations 
+d) It allows developers to write database queries using entity and property names 
+ANS: 
+d) To execute SQL queries. 
+
+Explanation:
+Hibernate Query Language (HQL) is a powerful object-oriented query language similar to SQL. It allows developers to write database queries using entity and property names instead of database tables and column names. 
+-----------------------------------
+57) What is lazy loading in Hibernate? 
+a) Loading data from the database only when needed 
+b) Loading all data eagerly during initialization 
+c) Loading data in a separate thread 
+d) Loading data from a cache 
+ANS: 
+a) Loading data from the database only when needed. 
+
+Explanation:
+Lazy loading is a technique in Hibernate where associated data is fetched from the database only when it is accessed for the first time. This improves performance by reducing unnecessary database queries. 
+-----------------------------------
+58) Which Hibernate mapping type is used to represent a one-to-many association? 
+a) @OneToMany 
+b) @ManyToOne 
+c) @OneToOne 
+d) @ManyToMany 
+ANS: 
+a) @OneToMany. 
+
+Explanation:
+The @OneToMany annotation is used to represent a one-to-many association in Hibernate. It is used to define a relationship where one entity has a collection of other entities. 
+-----------------------------------
+59) What is the purpose of Hibernate's EntityManager? 
+a) To manage database connections 
+b) To define database schemas 
+c) To handle database transactions 
+d) To persist and retrieve entities 
+ANS: 
+d) To persist and retrieve entities. 
+
+Explanation:
+The EntityManager in Hibernate is responsible for persisting and retrieving entities from the database. It provides methods for managing the lifecycle of entities and performing CRUD operations. 
+-----------------------------------
+60) Which database operations does Hibernate's EntityManager support?
+a) Create and update 
+b) Read and delete 
+c) Create, read, update, and delete 
+d) Read and update 
+ANS: 
+c) Create, read, update, and delete. 
+
+Explanation:
+Hibernate's EntityManager supports all the major database operations, including creating new entities, reading existing entities, updating entities, and deleting entities. 
+-----------------------------------
+61) Which annotation is used to map a Java class to a database table in Hibernate? 
+a) @Entity 
+b) @Table 
+c) @Column 
+d) @Id 
+ANS: 
+a) @Entity. 
+
+Explanation:
+The @Entity annotation is used to map a Java class to a database table in Hibernate. It marks a class as an entity that can be persisted in the database. 
+
+-----------------------------------
+62) What is the purpose of Hibernate's Second Level Cache? 
+a) To cache database query results 
+b) To cache Java objects 
+c) To cache database connections 
+d) To cache database schema information 
+Question 14
+ANS: 
+b) To cache Java objects. 
+
+Explanation:
+Hibernate's Second Level Cache is used to cache Java objects to improve performance. It reduces the need to fetch the same objects from the database repeatedly. 
+-----------------------------------
+63) What is the role of Hibernate's Transaction object? 
+a) To execute SQL queries 
+b) To manage database connections 
+c) To handle database transactions
+d) To define Hibernate entity mappings 
+Question 15
+ANS: 
+c) To handle database transactions. 
+
+Explanation:
+The Transaction object in Hibernate is responsible for managing database transactions. It provides methods for beginning, committing, or rolling back transactions. 
+-----------------------------------
+64) Which association mapping type is used to represent a many-to-many association in Hibernate? 
+a) @OneToMany 
+b) @ManyToOne 
+c) @OneToOne 
+d) @ManyToMany 
+ANS:  
+d) @ManyToMany. 
+
+Explanation:
+The @ManyToMany annotation is used to represent a many-to-many association in Hibernate. It is used to define a relationship where multiple entities can be associated with multiple other entities. 
+-----------------------------------
+65) What is the purpose of Hibernate's Criteria API? 
+a) To define database schemas 
+b) To perform database CRUD operations 
+c) To execute SQL queries 
+d) To build type-safe queries using Java code 
+ANS: 
+d) To build type-safe queries using Java code. 
+
+Explanation:
+Hibernate's Criteria API provides a programmatic way to create database queries using Java code. It allows developers to build type-safe queries without writing SQL directly. 
+-----------------------------------
+66) Which annotation is used to specify the column name in a Hibernate entity class? 
+a) @PrimaryKey 
+b) @Id 
+c) @GeneratedValue 
+d) @Column 
+ANS: 
+d) @Column. 
+
+Explanation:
+The @Column annotation is used to specify the column name in a Hibernate entity class. It allows developers to map a field or property to a specific database column. 
+-----------------------------------
+67) What is the purpose of Hibernate's Dialect class? 
+a) To define database schemas 
+b) To create database connections 
+c) To handle database transactions 
+d) To provide database-specific SQL dialects 
+ANS:  
+d) To provide database-specific SQL dialects. 
+
+Explanation:
+Hibernate's Dialect class provides database-specific SQL dialects. It generates the appropriate SQL statements and handles the differences in SQL syntax and behavior among various database systems.
+-----------------------------------
+68) Which configuration method is used to obtain a Hibernate SessionFactory object? 
+a) configure() 
+b) buildSessionFactory() 
+c) createSessionFactory() 
+d) getSessionFactory() 
+ANS:  
+b) buildSessionFactory(). 
+
+Explanation:
+The buildSessionFactory() method is used to obtain a Hibernate SessionFactory object. It is typically called during application initialization to create a SessionFactory instance that can be used throughout the application. 
+-----------------------------------
+69) Which Hibernate annotation is used to enable caching for an entity class? 
+a) @Cacheable 
+b) @Cached 
+c) @Cache 
+d) @Caching
+ANS:  
+a) @Cacheable. 
+
+Explanation:
+The @Cacheable annotation is used to enable caching for an entity class. It indicates that the entity should be cached, improving performance by reducing database access.
+-----------------------------------
+70) What is the difference between EAGER and LAZY fetching in Hibernate? 
+a) EAGER fetch loads associated entities eagerly, while LAZY fetch loads them lazily on demand 
+b) EAGER fetch loads associated entities on demand, while LAZY fetch loads them eagerly 
+c) EAGER fetch loads only the primary entity, while LAZY fetch loads the associated entities as well 
+d) EAGER fetch and LAZY fetch have no difference in Hibernate 
+ANS:  
+a) EAGER fetch loads associated entities eagerly, while LAZY fetch loads them lazily on demand.
+
+Explanation:
+EAGER fetching in Hibernate loads associated entities immediately along with the primary entity, while LAZY fetching loads them only when they are accessed for the first time.
+-----------------------------------
+71) What are Hibernate Interceptors used for? 
+a) To intercept and modify SQL queries before execution 
+b) To intercept and modify entity properties before persistence 
+c) To intercept and modify database transactions 
+d) To intercept and modify Hibernate session operations
+ANS: 
+b) To intercept and modify entity properties before persistence. 
+
+Explanation:
+Hibernate Interceptors are used to intercept and modify entity properties before they are persisted or retrieved from the database. They allow developers to add custom behavior or perform additional actions during entity operations.
+-----------------------------------
+72)
+SessionFactory is a thread-safe object.
+a) True
+b) False
+ANS: a
+Explanation: SessionFactory is a thread-safe object. Multiple threads can access it simultaneously.
+-----------------------------------
+73)
+Which of the following is not a state of object in Hibernate?
+a) Attached()
+b) Detached()
+c) Persistent()
+d) Transient()
+ANS: a
+Explanation: Attached() is not a state of object in Hibernate. Detached(), Persistent() and Transient() are the only states in Hibernate.
+-----------------------------------
+74)
+Which of the following is not an inheritance mapping strategies?
+a) Table per hierarchy
+b) Table per concrete class
+c) Table per subclass
+d) Table per class
+ANS: d
+Explanation: Table per class is not an inheritance mapping strategies.
+-----------------------------------
+75)
+SessionFactory provides an instance of Session.
+
+A. TRUE
+B. FALSE
+C. Can be true or false
+D. Can not say
+View Answer
+
+ANS: A
+Explanation: True, SessionFactory provides an instance of Session. It is a factory class that gives the Session objects based on the configuration parameters in order to establish the connection to the database.
+-----------------------------------
+76)
+Hibernate has _____ cache types
+
+A. 1
+B. 2
+C. 3
+D. 4
+ANS: B
+Explanation: Hibernate has 2 cache types: First level and second level cache
+-----------------------------------
+77)
+A ___________ represents a unit of work with the database and most of the RDBMS supports transaction functionality.
+
+A. Query objects
+B. Session
+C. Criteria objects
+D. Transaction
+ANS: D
+Explanation: A Transaction represents a unit of work with the database and most of the RDBMS supports transaction functionality. Transactions in Hibernate are handled by an underlying transaction manager and transaction (from JDBC or JTA).
+-----------------------------------
+78)
+Which session method begin a unit of work and return the associated Transaction object?
+A. clear
+B. cancelQuery
+C. Transaction beginTransaction
+D. Transaction
+Ans : C
+Explanation: Transaction beginTransaction(): Begin a unit of work and return the associated Transaction object.
+-----------------------------------
+79)
+What do you think about the statement - "session being a thread-safe object"?
+
+A. Yes
+B. No
+C. Can be yes or no
+D. Can not say
+Ans : B
+Explanation: No, Session is not a thread-safe object which means that any number of threads can access data from it simultaneously.
+-----------------------------------
+80)
+______object is used to create SessionFactory object in hibernate? 
+A. Session
+B. Configuration
+C. Transaction
+D. Factory
+ANS: B
+-----------------------------------
+81)
+ In case of Table per Concrete class, there will be three tables in the database having no relations to each other. Which are the ways to map the table? 
+A. By union-subclass element
+B. By self-creating the table for each class
+C. Both A & B
+D. None of the above
+ANS: C
+-----------------------------------
+82)
+Which of the following is not an advantage of Hibernate Criteria API? 
+A. Allows to use aggregate functions
+B. Cannot order the result set
+C. Allows to fetch only selected columns of result
+D. Can add conditions while fetching results
+ANS: B
+Cannot order the result set
+-----------------------------------
+83)
+Which property are used to configure diver class in hibernate? 
+A. hibernate.connection.driver_class
+B. hibernate.connection.datasource
+ANS: A
+-----------------------------------
+84)
+Which property is used to enable auto commit for JDBC pooled connections? 
+A. hibernate.hbm2ddl.auto
+B. hibernate.connection.autocommit
+ANS: B
+==========================================================UPTO THIS UPLOADED TO GLCA DRIVE======================================================================
+-----------------------------------
+-----------------------------------
+-----------------------------------
+-----------------------------------
+-----------------------------------
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

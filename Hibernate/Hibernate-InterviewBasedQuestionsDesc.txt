@@ -1,0 +1,788 @@
+		HIBERNATE INTERVIEW BASED QUESTIONS
+----------------------------------------------------------------------------------------
+
+
+-----------------------------------
+
+1) 
+Q)
+What is ORM?
+A)
+ORM is an acronym for Object/Relational mapping. It is a programming strategy to map object with the data stored in the database. It simplifies data creation, data manipulation, and data access.
+-----------------------------------------------------------------------------------
+2)
+Q)
+Explain hibernate architecture?
+A)
+Hibernate architecture comprises of many interfaces such as Configuration, SessionFactory, Session, Transaction, etc.
+REFER MS WORD DOC FOR IMAGE
+-----------------------------------------------------------------------------------
+3)
+Q)
+What are the core interfaces of Hibernate?
+A)
+Configuration
+SessionFactory
+Session
+Query
+Criteria
+Transaction
+-----------------------------------------------------------------------------------
+4)
+Q)
+Mention some of the advantages of using ORM over JDBC.
+A)
+Version 1)
+ORM has the following advantages over JDBC:
+Application development is fast.
+Management of transaction.
+Generates key automatically.
+Details of SQL queries are hidden.
+Version 2)
+Hibernate removes a lot of boiler-plate code that comes with JDBC API, the code looks more cleaner and readable.
+Hibernate supports inheritance, associations and collections. These features are not present with JDBC API.
+Hibernate implicitly provides transaction management, in fact most of the queries can’t be executed outside transaction. In JDBC API, we need to write code for transaction management using commit and rollback. Read more at JDBC Transaction Management.
+JDBC API throws SQLException that is a checked exception, so we need to write a lot of try-catch block code. Most of the times it’s redundant in every JDBC call and used for transaction management. Hibernate wraps JDBC exceptions and throw JDBCException or HibernateException un-checked exception, so we don’t need to write code to handle it. Hibernate built-in transaction management removes the usage of try-catch blocks.
+Hibernate Query Language (HQL) is more object oriented and close to java programming language. For JDBC, we need to write native sql queries.
+Hibernate supports caching that is better for performance, JDBC queries are not cached hence performance is low.
+Hibernate provide option through which we can create database tables too, for JDBC tables must exist in the database.
+Hibernate configuration helps us in using JDBC like connection as well as JNDI DataSource for connection pool. This is very important feature in enterprise application and completely missing in JDBC API.
+Hibernate supports JPA annotations, so code is independent of implementation and easily replaceable with other ORM tools. JDBC code is very tightly coupled with the application.
+
+
+-----------------------------------------------------------------------------------
+5)
+Q)
+Define criteria in terms of Hibernate.
+A)
+The objects of criteria are used for the creation and execution of the object-oriented criteria queries.
+-----------------------------------------------------------------------------------
+6)
+Q)
+How is SQL query created in Hibernate?
+A)
+The SQL query is created with the help of the following syntax:
+
+Session.createSQLQuery
+-----------------------------------------------------------------------------------
+7)
+Is Session a thread-safe object?
+No, Session is not a thread-safe object, many threads can access it simultaneously. In other words, you can share it between threads.
+-----------------------------------------------------------------------------------
+8)
+Q)
+What is the difference between session.save() and session.persist() method?
+A)
+		save()						persist()
+returns the identifier (Serializable) of the instance.	Return nothing because its return type is void.
+public Serializable save(Object o)			public void persist(Object o)
+-----------------------------------------------------------------------------------
+9)
+Q)
+What is the difference between get and load method?
+A)
+The differences between get() and load() methods are given below.
+
+				get()								load()
+1)	Returns null if an object is not found.						Throws ObjectNotFoundException if an object is not found.
+2)	get() method always hit the database.						load() method doesn't hit the database.
+3)	It returns the real object, not the proxy.					It returns proxy object.
+4)	It should be used if you are not sure about the existence of instance.		It should be used if you are sure that instance exists.
+VERSION 2:
+				Get()								Load()
+				
+get() returns real object – hence is known as eager method for an object	load() method returns proxy object – hence load() is lazy load for an object
+get() method is slower than load() method					load() is faster compared to get() method
+-----------------------------------------------------------------------------------
+10)
+Q)
+What is the difference between update and merge method?
+A)
+The differences between update() and merge() methods are given below.
+				The update() method				merge() method
+1)	Update means to edit something.					Merge means to combine something.
+2)	update() should be used if the session doesn't 			merge() should be used if you don't know the state of the session, means you want
+	contain an already persistent state with the same id. 		to make the modification 
+	It means an update should be used inside the session only. 
+	After closing the session, it will throw the error.	
+
+Let's try to understand the difference by the example given below:
+
+SessionFactory factory = cfg.buildSessionFactory();  
+Session session1 = factory.openSession();  
+   
+Employee e1 = (Employee) session1.get(Employee.class, Integer.valueOf(101));//passing id of employee  
+session1.close();  
+   
+e1.setSalary(70000);  
+   
+Session session2 = factory.openSession();  
+Employee e2 = (Employee) session1.get(Employee.class, Integer.valueOf(101));//passing same id  
+  
+Transaction tx=session2.beginTransaction();  
+session2.merge(e1);  
+  
+tx.commit();  
+session2.close();  
+After closing session1, e1 is in detached state. It will not be in the session1 cache. So if you call update() method, it will throw an error.
+Then, we opened another session and loaded the same Employee instance. If we call merge in session2, changes of e1 will be merged in e2. 
+-----------------------------------------------------------------------------------
+11)
+Q)
+What are the states of the object in hibernate?
+A)
+There are 3 states of the object (instance) in hibernate.
+
+Transient: The object is in a transient state if it is just created but has no primary key (identifier) and not associated with a session.
+Persistent: The object is in a persistent state if a session is open, and you just saved the instance in the database or retrieved the instance from the database.
+Detached: The object is in a detached state if a session is closed. After detached state, the object comes to persistent state if you call lock() or update() method.
+-----------------------------------------------------------------------------------
+12)
+Q)
+How many types of association mapping are possible in hibernate?
+A)
+There can be 4 types of association mapping in hibernate.
+
+One to One
+One to Many
+Many to One
+Many to Many
+-----------------------------------------------------------------------------------
+13)
+Q)
+What is lazy loading in hibernate?
+A)
+Lazy loading in hibernate improves the performance. It loads the child objects on demand.
+Since Hibernate 3, lazy loading is enabled by default, and you don't need to do lazy="true". It means not to load the child objects when the parent is loaded.
+-----------------------------------------------------------------------------------
+14)
+Q)
+What is HQL (Hibernate Query Language)?
+A)
+Hibernate Query Language is known as an object-oriented query language. It is like a structured query language (SQL).
+The main advantage of HQL over SQL is:
+
+You don't need to learn SQL
+Database independent
+Simple to write a query
+-----------------------------------------------------------------------------------
+15)
+Q)
+What is the difference between first level cache and second level cache?
+A)
+			First Level Cache				Second Level Cache
+1)	First Level Cache is associated with Session.	Second Level Cache is associated with SessionFactory.
+2)	It is enabled by default.			It is not enabled by default.
+-----------------------------------------------------------------------------------
+16)
+Q)
+Differentiate between getCurrentSession and openSession methods?
+A)
+Both the methods are provided by the Session Factory. The main differences are given below:
+
+
+			getCurrentSession()					openSession()
+Version 1:
+i) This method returns the session bound to the context.		This method always opens a new session.
+
+ii) This session object scope belongs to the hibernate context and to 	A new session object has to be created for each request in a multi-threaded environment.
+make this work hibernate configuration file has to be modified by 	Hence, you need not configure any property to call this method.
+adding <property name = "hibernate.current_session_context_class"> 
+thread </property>. If not added, then using 
+the method would throw an HibernateException.	
+
+iii)This session object gets closed once the session factory is closed.	It's the developer’s responsibility to close this object once all the database operations 
+									are done.
+iv)In a single-threaded environment, this method is faster than 	In single threaded environment, it is slower than getCurrentSession()
+openSession().	
+Version 2:
+			openSession()						getCurrentSession()
+1) openSession() method always creates new Session object.			getCurrentSession() method creates new Session when it does not exist. 
+										OR use same session from current hibernate context
+2) It uses flush and close session objects explicitly				Hibernate internally flush or close session objects and does not need use them 										explicitly.
+3) For single threaded environment openSession() method performs weaker 	getCurrentSession() method performs better compared to openSession() method.
+compared to getCurrentSession() method	For single threaded environment 
+4) openSession() does not need configuration of any property to call it.	It is required to configure "CURRENT_SESSION_CONTEXT_CLASS" property before calling 										getCurrentSession() else it may fail
+-----------------------------------------------------------------------------------
+17)
+Q)
+Differentiate between save() and saveOrUpdate() methods in hibernate session.
+A)
+				save()								saveOrUpdate()
+i)save() generates a new identifier and INSERT record into a database	Session.saveOrUpdate() can either INSERT or UPDATE based upon existence of a record.
+
+ii)The insertion fails if the primary key already exists in the table.	In case the primary key already exists, then the record is updated.
+
+iii)The return type is Serializable which is the newly generated 	The return type of the saveOrUpdate() method is void.
+identifier id value as a Serializable object.
+
+iv)This method is used to bring only a transient object 		This method can bring both transient (new) and detached (existing) objects into a persistent 
+to a persistent state.							state. It is often used to re-attach a detached object into a Session
+-----------------------------------------------------------------------------------
+18)
+Q)
+What is Hibernate Validator Framework?
+A)
+Data validation is integral part of any application. You will find data validation at presentation layer with the use of Javascript, then at the server side code before processing it. Also data validation occurs before persisting it, to make sure it follows the correct format. Validation is a cross cutting task, so we should try to keep it apart from our business logic. That’s why JSR303 and JSR349 provides specification for validating a bean by using annotations. Hibernate Validator provides the reference implementation of both these bean validation specs. Read more at [Hibernate Validation Example](/community/tutorials/hibernate-validator-jsr303-example-tutorial).
+-----------------------------------------------------------------------------------
+19)
+Q)
+What is cascading and what are different types of cascading?
+A)
+When we have relationship between entities, then we need to define how the different operations will affect the other entity. This is done by cascading and there are different types of it. Here is a simple example of applying cascading between primary and secondary entities.
+@Entity
+@Table(name = "EMPLOYEE")
+public class Employee {
+
+@OneToOne(mappedBy = "employee")
+@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+private Address address;
+
+}
+```
+
+Note that Hibernate CascadeType enum constants are little bit different from JPA `javax.persistence.CascadeType`, so we need to use the Hibernate CascadeType and Cascade annotations for mappings, as shown in above example. Commonly used cascading types as defined in CascadeType enum are:
+1.  None: No Cascading, it's not a type but when we don't define any cascading then no operations in parent affects the child.
+2.  ALL: Cascades save, delete, update, evict, lock, replicate, merge, persist. Basically everything
+3.  SAVE\UPDATE: Cascades save and update, available only in hibernate.
+4.  DELETE: Corresponds to the Hibernate native DELETE action, only in hibernate.
+5.  DETATCH, MERGE, PERSIST, REFRESH and REMOVE - for similar operations
+6.  LOCK: Corresponds to the Hibernate native LOCK action.
+7.  REPLICATE: Corresponds to the Hibernate native REPLICATE action.
+----------------------------------------------------------------------------------
+20)
+Q)
+What is Hibernate Proxy and how it helps in lazy loading?
+A)
+Hibernate uses proxy object to support lazy loading. Basically when you load data from tables, hibernate doesn't load all the mapped objects. As soon as you reference a child or lookup object via getter methods, if the linked entity is not in the session cache, then the proxy code will go to the database and load the linked object. It uses javassist to effectively and dynamically generate sub-classed implementations of your entity objects.
+----------------------------------------------------------------------------------
+21)
+Q)
+Why we should not make Entity Class final?
+A)
+Hibernate use proxy classes for lazy loading of data, only when it's needed. This is done by extending the entity bean, if the entity bean will be final then lazy loading will not be possible, hence low performance.
+----------------------------------------------------------------------------------
+22)
+Q)
+What is Hibernate Validator Framework?
+A)
+Data validation is integral part of any application. You will find data validation at presentation layer with the use of Javascript, then at the server side code before processing it. Also data validation occurs before persisting it, to make sure it follows the correct format. Validation is a cross cutting task, so we should try to keep it apart from our business logic. That’s why JSR303 and JSR349 provides specification for validating a bean by using annotations. Hibernate Validator provides the reference implementation of both these bean validation specs. Read more at [Hibernate Validation Example](/community/tutorials/hibernate-validator-jsr303-example-tutorial).
+----------------------------------------------------------------------------------
+23)
+Q)
+How transaction management works in Hibernate?
+A)
+Transaction management is very easy in hibernate because most of the operations are not permitted outside of a transaction. So after getting the session from SessionFactory, we can call session `beginTransaction()` to start the transaction. This method returns the Transaction reference that we can use later on to either commit or rollback the transaction. Overall hibernate transaction management is better than JDBC transaction management because we don't need to rely on exceptions for rollback. Any exception thrown by session methods automatically rollback the transaction.
+----------------------------------------------------------------------------------
+24)
+Q)
+What is Named SQL Query?
+A)
+Hibernate provides Named Query that we can define at a central location and use them anywhere in the code. We can created named queries for both HQL and Native SQL. Hibernate Named Queries can be defined in Hibernate mapping files or through the use of JPA annotations @NamedQuery and @NamedNativeQuery.
+----------------------------------------------------------------------------------
+25)
+Q)
+What is hibernate caching? Explain Hibernate first level cache?
+A)
+As the name suggests, hibernate caches query data to make our application faster. Hibernate Cache can be very useful in gaining fast application performance if used correctly. The idea behind cache is to reduce the number of database queries, hence reducing the throughput time of the application. Hibernate first level cache is associated with the Session object. Hibernate first level cache is enabled by default and there is no way to disable it. However hibernate provides methods through which we can delete selected objects from the cache or clear the cache completely. Any object cached in a session will not be visible to other sessions and when the session is closed, all the cached objects will also be lost. For better explanation, please read [Hibernate First Level Cache](/community/tutorials/hibernate-caching-first-level-cache).
+----------------------------------------------------------------------------------
+26)
+Q)
+What are the concurrency strategies?
+A)
+
+Concurrency strategies are mediators responsible for storing and retrieving cached items. When enabling a second-level cache, the developer must decide which cache concurrency to implement for each persistent class and collection.
+
+The concurrency strategies are:
+
+Non-strict-Read-Write: This strategy works with data that can be altered and can tolerate a small chance of stale data. This strategy offers no guarantee of consistency between the database and the cache.
+Read-Only: This strategy works best with data that can’t be changed, and consequently, is only used to reference data.
+Transactional: This strategy is used primarily for read-mostly data in cases where it’s essential to prevent stale data in concurrent transactions, in those rare instances of an update.
+Read-Write: This strategy is like the transactional strategy.
+----------------------------------------------------------------------------------
+27)
+Q)
+What is the difference between setMaxResults() and setFetchSize() of Query?
+A)
+The setMaxResults() method limits the number of results returned by a query, while the setFetchSize() method controls the number of rows retrieved from the database at a time. setMaxResults() is used to limit the total number of results returned, while setFetchSize() controls the number of rows retrieved at a time to avoid memory issues. 
+----------------------------------------------------------------------------------
+28)
+Q)
+Does Hibernate support Native SQL Queries?
+A) 
+Yes, Hibernate supports Native SQL Queries, which allow you to use SQL statements directly to interact with the database. This can be useful when you want to perform complex queries that are impossible with HQL or Criteria API.
+----------------------------------------------------------------------------------
+29)
+Q)
+Which are the design patterns that are used in Hibernate framework?
+A)
+There are a few design patterns used in Hibernate Framework, namely:
+
+Domain Model Pattern: An object model of the domain that incorporates both behavior as well as data.
+Data Mapper: A layer of the map that moves data between objects and a database while keeping it independent of each other and the map itself.
+Proxy Pattern: It is used for lazy loading.
+Factory Pattern: Used in SessionFactory.
+Query Object
+Unit of Work
+----------------------------------------------------------------------------------
+30)
+Q)
+Differentiate between managed associations and Hibernate associations?
+A)
+Managed associations:  Relate to container management persistence and are bi-directional.
+
+Hibernate Associations: These associations are unidirectional.
+----------------------------------------------------------------------------------
+31)
+Q)
+What are the best practices that Hibernate recommends for persistent classes?
+A)
+All Java classes that will be persisted need a default constructor.
+All classes should contain an ID in order to allow easy identification of your objects within Hibernate and the database. This property maps to the primary key column of a database table.
+All attributes that will be persisted should be declared private and have getXXX and setXXX methods defined in the JavaBean style.
+A central feature of Hibernate, proxies, depends upon the persistent class being either non-final, or the implementation of an interface that declares all public methods.
+All classes that do not extend or implement some specialized classes and interfaces required by the EJB framework.
+----------------------------------------------------------------------------------
+32)
+Q)
+What are the best practices to follow with Hibernate framework?
+A)
+Always check the primary key field access, if it’s generated at the database layer then you should not have a setter for this.
+By default hibernate set the field values directly, without using setters. So if you want Hibernate to use setters, then make sure proper access is defined as @Access(value=AccessType.PROPERTY).
+If access type is property, make sure annotations are used with getter methods and not setter methods. Avoid mixing of using annotations on both filed and getter methods.
+Use native sql query only when it can’t be done using HQL, such as using the database-specific feature.
+If you have to sort the collection, use ordered list rather than sorting it using Collection API.
+Use named queries wisely, keep it at a single place for easy debugging. Use them for commonly used queries only. For entity-specific query, you can keep them in the entity bean itself.
+For web applications, always try to use JNDI DataSource rather than configuring to create a connection in hibernate.
+Avoid Many-to-Many relationships, it can be easily implemented using bidirectional One-to-Many and Many-to-One relationships.
+For collections, try to use Lists, maps and sets. Avoid array because you don’t get benefit of lazy loading.
+Do not treat exceptions as recoverable, roll back the Transaction and close the Session. If you do not do this, Hibernate cannot guarantee that the in-memory state accurately represents the persistent state.
+Prefer DAO pattern for exposing the different methods that can be used with entity bean
+Prefer lazy fetching for associations
+----------------------------------------------------------------------------------
+33)
+Q)
+How can we add criteria to a SQL Query?
+A)
+We can add criteria in hibernate by using the Criteria API that programmatically builds queries by using a more object-oriented approach, instead of writing complex SQL queries. It gives you a powerful developed application which will execute using java code, also enable the dynamic queries without directly writing the SQL statements so here, you can use criteria API and directly add criteria to a query in hibernate.
+Example:
+import org.hibernate.Criteria; 
+import org.hibernate.Session; 
+import org.hibernate.SessionFactory; 
+import org.hibernate.cfg.Configuration; 
+import org.hibernate.criterion.Restrictions; 
+  
+public class Main { 
+  
+    public static void main(String[] args) { 
+        // Create a Hibernate configuration and session factory 
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml"); 
+        SessionFactory sessionFactory = configuration.buildSessionFactory(); 
+  
+        // Open a new session 
+        Session session = sessionFactory.openSession(); 
+  
+        try { 
+            // Create a Criteria instance for the Product class 
+            Criteria criteria = session.createCriteria(Product.class); 
+  
+            // Add criteria to filter products by category and price range 
+            criteria.add(Restrictions.eq("category", "Programming")); 
+            criteria.add(Restrictions.between("price", 100.0, 500.0)); 
+  
+            // Execute the query and retrieve the list of products 
+            List<Product> products = criteria.list(); 
+  
+            // Process the products 
+            for (Product product : products) { 
+                System.out.println("Product Name: " + product.getName()); 
+            } 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        } finally { 
+            // Close the session when done 
+            session.close(); 
+        } 
+  
+        // Close the session factory 
+        sessionFactory.close(); 
+    } 
+}
+
+
+----------------------------------------------------------------------------------
+34)
+Q)
+What is the difference between session.save() and session.persist() method?
+A)
+Properties				session.save()						session.persist()
+Return Value			It will give generated identifier.			It will not generate anything.
+Identifier Generation		It is necessary for non-assigned IDs.			It is not necessary and can be assigned directly.
+Transient Instances		It will be detached or transient instance.		It should be Transient instance.
+Cascade Operations		It can’t cascade at its own.				It can be cascaded.
+Managed State			It will give the controlled instance.			It will be rest as transient.
+Flush Immediate			It will give you an instant SQL INSERT.			It will not have instant SQL operation.
+Unsaved Transient State		It is not secured with unsaved transient instances.	It is secured with unsaved transient instances.
+Inverse Associations		It will be cascaded to reverse end of associations.	It will not be cascaded to reverse end of associations.
+Database Round-Trips		It might cause the more database inter-relations.	It might cause the lesser database inter-relations.
+Efficiency and Performance	It might pursue to more structured use of IDs.		It might pursue to more structured use of IDs but only in some scene.
+
+VERSION 2:
+				Save()								Persist()
+ returns the identifier of the instance which is serializable in nature.		The method has return type as void, hence it does not return anything
+ returns an identifier hence an insert query gets executed to get the identifier. 	Irrespective of whether it is inside or outside of transaction	If persist() 											method is called out side of transaction boundaries, it will not execute an 											insert query.
+----------------------------------------------------------------------------------
+35)
+Q)
+What is the purpose of the `@DynamicUpdate` annotation in Hibernate, and how does it affect entity updates?
+A)
+The `@DynamicUpdate` annotation is used in Hibernate to optimize for entities to update the statements. By default, when an entity is updated, Hibernate generates an update statement that includes all columns, even if only a few columns have actually changed. This can result in unnecessary database traffic and decreased performance.
+
+The `@DynamicUpdate` annotation addresses this issue by instructing Hibernate to generate an update statement that includes only the columns that have been modified in the current transaction. This optimization can significantly reduce the amount of data being sent to the database during updates, leading to improved performance and reduced network overhead. The `@DynamicUpdate` annotation resolves this concern by directing Hibernate to create an update statement containing solely the columns that have undergone modification within the current transaction. This enhancement substantially minimizes the volume of data transmitted to the database during updates, thereby enhancing performance and diminishing network overhead. Below are the key points about the @DynamicUpdate annotation in Hibernate:
+
+Optimized Updates
+Selective Common Update
+Reduction in Data Transfer
+Performance Boost
+Network Overhead Reduction
+----------------------------------------------------------------------------------
+36)
+Q)
+Should all the mapping files of hibernate have .hbm.xml extension to work properly?
+A)
+No, having .hbm.xml extension is a convention and not a requirement for hibernate mapping file names. We can have any extension for these mapping files.
+----------------------------------------------------------------------------------
+37)
+Q)
+What’s the usage of Hibernate QBC API?
+A)
+Hibernate Query By Criteria (QBC) API is used to create queries by manipulation of criteria objects at runtime.
+----------------------------------------------------------------------------------
+38)
+Q)
+How can we reattach any detached objects in Hibernate?
+A)
+Objects which have been detached and are no longer associated with any persistent entities can be reattached by calling session.merge() method of session class.
+----------------------------------------------------------------------------------
+39)
+Q)
+What’s the use of session.lock() in hibernate?
+A)
+session.lock() method of session class is used to reattach an object which has been detached earlier. This method of reattaching doesn’t check for any data synchronization in database while reattaching the object and hence may lead to lack of synchronization in data.
+----------------------------------------------------------------------------------
+40)
+Q)
+What the three inheritance models are of hibernate?
+A)
+Hibernate has following three inheritance models:
+
+Tables Per Concrete Class
+Table per class hierarchy
+Table per sub-class
+----------------------------------------------------------------------------------
+41)
+Q)
+What is the role of the 'evict' method in Hibernate?
+A)
+The evict() method in Hibernate helps detach the object from the session cache. Once the object is detached from the session, any change to the object will not be persisted.
+----------------------------------------------------------------------------------
+42)
+Q)
+List essential annotations used in Hibernate mapping.
+
+A) 
+The Hibernate association mapping annotations are:
+@PrimayKeyJoinColumn
+@JoinTable
+@MapsId
+
+@Entity : It is used to define class as entity bean.
+@Table : It is used to define table name in database corrresponding to Entity.
+@Id : It is used to define primary key in the entity bean.
+@Column: It is used to define column properties in database corrresponding to entity bean property.
+@OneToOne, @ManyToOne, @ManyToMany ,@OneToMany: These annotations are used to define relationships between various entities.
+@JoinColumn : It is used to specify a mapped column for joining an entity association.
+----------------------------------------------------------------------------------
+43)
+Q)
+How does Hibernate Proxy support lazy loading?
+A)
+An uninitialized proxy from the desired entity class is created when Session.load() is called. These proxies or byte code enhancements are used to implement JPA lazy loading functionality. Using lazy loading lazy associations are intercepted, and relations are initialized prior to sending results back to the caller.
+
+SQL statement from HQL to fetch an entity object is executed by Hibernate on getter or setter method call of non-primary key attribute. Lazy loading of hibernate is used to load a Catalog – (list of products on sale) without losing performance in online stores.
+----------------------------------------------------------------------------------
+44)
+Q)
+List different types of cascading.
+
+A)
+Cascade feature can be implemented in two ways – using XML file OR using annotation. The various types of cascading used by Java Persistence API (JPA) and Hibernate are listed below:
+
+Java Persistence API Cascade Types
+
+PERSIST
+MERGE
+REFRESH
+REMOVE
+DETACH
+ALL
+----------------------------------------------------------------------------------
+45)
+Q)
+List the ways to create a primary key using Hibernate.
+A) 
+Following are four strategies to generate primary keys using JPA and Hibernate:
+GenerationType.AUTO
+GenerationType.IDENTITY
+GenerationType.SEQUENCE
+GenerationType.TABLE
+----------------------------------------------------------------------------------
+46)
+Q)
+What are different collection types available in hibernate?
+A) 
+There are 5 collection types available in Hibernate for one to many relationship mappings.
+
+Bag
+Set
+List
+Map
+Array
+----------------------------------------------------------------------------------
+47)
+Q)
+What are inheritance mapping strategies are available in Hibernate?
+A) 
+There are three strategies supported by Hibernate. You can use xml files or JPA annotation to implement them.
+
+[Table per Hierarchy]
+(https://java2blog.com/hibernate-inheritancetable-per-class/ “Table per Hierarchy”)
+[Table per concrete class]
+(https://java2blog.com/hibernate-inheritancetable-per-concrete/ “Table per concrete class”)
+[Table per subclass]
+(https://java2blog.com/hibernate-inheritancetable-per-subclass/ “Table per subclass”)
+----------------------------------------------------------------------------------
+48)
+Q)
+What do you understand by Hibernate tuning?
+A) 
+Hibernate tuning is process of optimizing performance of Hibernate application.
+
+Some of the performance tuning strategies are:
+
+Data Caching
+Session management
+SQL optimization
+----------------------------------------------------------------------------------
+49)
+Q)
+What is Named queries in Hibernate?
+A) 
+Named queries helps you to group HQL/SQL statements at single location. You can refer it by name in code when you want to use them. It helps you to avoid code mess that can happend because of scattered queriest through the project.
+Example
+@NamedQueries(
+    {
+        @NamedQuery(
+        name = "getEmployeeByName",
+        query = "from Employee e where e.name = :name"
+        )
+    }
+)
+ 
+/*
+ * This is our model class and it corresponds to Employee table in database
+ */
+@Entity
+@Table(name="EMPLOYEE")
+public class Employee {
+ 
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    int id;
+ 
+    @Column(name="name")
+    String name;
+ 
+    @Column(name="age")
+    int age;
+ 
+    public Employee(String name) {
+        this.name = name;
+    }
+ 
+    public int getId() {
+        return id;
+    }
+ 
+    public void setId(int id) {
+        this.id = id;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public int getAge() {
+        return age;
+    }
+ 
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+ 
+You can execute the query in main class as below:
+
+ 
+    TypedQuery query = session.getNamedQuery("getEmployeeByName");
+    query.setParameter("name","John");
+ 
+    List<Employee> employees=query.getResultList();
+    System.out.println(employees);
+----------------------------------------------------------------------------------
+50)
+Q)
+What is Query cache in Hibernate?
+A) 
+If you have queries that run over and over again,with same parameters, then query caching can you performance improvements in the application.
+
+Benifit from caching query results is very limited and dependent on the usage of the application. This is reason Hibernate disables query level cache by default.
+
+To enable, you need to do following:
+1)
+Set hibernate.cache.use_query_cache in hibernate config file.
+  <property name="hibernate.cache.use_query_cache">true</property>
+2) 
+You need to enable query cache for specific queries. Here is an example:
+3)
+List<Employees> employee = session.createQuery("from Employee e where e.name = :name")
+        .setEntity("employee", employee)
+        .setMaxResults(15)
+        .setCacheable(true)
+        .setCacheRegion("employeeReg")
+        .list();
+----------------------------------------------------------------------------------
+51)
+Q)
+What is cascading in Hiberante and can you list types of cascading?
+A) 
+Most of the time, if Entity relationships depend on existence of other entity.
+For example:
+In case of Employee-Address relationship, if Employee is removed from database, then Address does not make sense of its own. So when you remove Employee from database, then its associated Address should also be removed.
+
+You can use Cascading to achieve this. When you perform an action on entity, same action can be performed on associated entity.
+
+Here are the Cascading types supported by Hibernate:
+
+Cascade Operation
+Description
+ALL
+All the operations will be applied to parent entity’s associated entity. All operation includes DETACH, MERGE, PERSIST, REFRESH, REMOVE etc.
+DETACH
+If parent entitiy is detached from context, then the associated entity will also be detached.
+MERGE
+If parent entitiy is merged into the context, then the associated entity will also be merged.
+PERSIST
+If parent entitiy is persisted into the context, then the associated entity will also be persisted.
+REFRESH
+If parent entitiy is refreshed in the curent persistence context, then the associated entity will also be persisted.
+REMOVE
+If parent entitiy is removed from the curent persistence context, then the associated entity will also be removed.
+----------------------------------------------------------------------------------
+52)
+Q)
+What is hibernate configuration file?
+A) 
+Hibernate configuration file contains database configurations such as database url, username, password and dialect etc and is used to initialize SessionFactory. It also contains mapping files and entity class details.
+----------------------------------------------------------------------------------
+53)
+Q)
+Explain Hibernate Inheritance Strategies?
+
+A staple in hibernate interview questions for experienced professionals, be prepared to answer this one.
+
+Hibernate supports the three basic inheritance mapping strategies: 
+
+table per class hierarchy 
+table per subclass 
+table per concrete class 
+
+1. 
+Table per class Hierarchy 
+
+Let us assume we have an interface Payment which is implemented by classesCreditCardPayment, CashPayment, andChequePayment. When we map using the table per hierarchy mapping strategy, the xml would be written as below:: 
+
+<class name="Payment" table="PAYMENT"> 
+    <id name="id" type="long" column="PAYMENT_ID"> 
+        <generator class="native"/> 
+    </id> 
+    <discriminator column="PAYMENT_TYPE" type="string"/> 
+    <property name="amount" column="AMOUNT"/> 
+    ... 
+    <subclass name="CreditCardPayment" discriminator-value="CREDIT"> 
+        <property name="creditCardType" column="CCTYPE"/> 
+        ... 
+    </subclass> 
+    <subclass name="CashPayment" discriminator-value="CASH"> 
+        ... 
+    </subclass> 
+    <subclass name="ChequePayment" discriminator-value="CHEQUE"> 
+        ... 
+    </subclass> 
+</class> 
+In this strategy, exactly on table is required. The restrictions or limitations based on this strategy is that the subclass properties cannot have NULL values. 
+
+2) 
+Table per subclass 
+A table per subclass mapping looks like this: 
+
+<class name="Payment" table="PAYMENT"> 
+    <id name="id" type="long" column="PAYMENT_ID"> 
+        <generator class="native"/> 
+    </id> 
+    <property name="amount" column="AMOUNT"/> 
+    ... 
+    <joined-subclass name="CreditCardPayment" table="CREDIT_PAYMENT"> 
+        <key column="PAYMENT_ID"/> 
+        <property name="creditCardType" column="CCTYPE"/> 
+        ... 
+    </joined-subclass> 
+<joined-subclass name="CashPayment" table="CASH_PAYMENT"> 
+        <key column="PAYMENT_ID"/> 
+        ... 
+    </joined-subclass> 
+    <joined-subclass name="ChequePayment" table="CHEQUE_PAYMENT"> 
+        <key column="PAYMENT_ID"/> 
+        ... 
+    </joined-subclass> 
+</class> 
+In this strategy four tables are required i.e. 1 superclass and 3 subclasses. The three subclass tables are associated with the superclass table through the Primary Key. So this relational model is actually a one-to-one association between the superclass and subclasses. 
+
+3. 
+Table per concrete class 
+We can map the table per concrete class strategy by using <union-subclass>. 
+
+<class name="Payment"> 
+    <id name="id" type="long" column="PAYMENT_ID"> 
+        <generator class="sequence"/> 
+    </id> 
+    <property name="amount" column="AMOUNT"/> 
+    ... 
+    <union-subclass name="CreditCardPayment" table="CREDIT_PAYMENT"> 
+        <property name="creditCardType" column="CCTYPE"/> 
+        ... 
+    </union-subclass> 
+    <union-subclass name="CashPayment" table="CASH_PAYMENT"> 
+        ... 
+    </union-subclass> 
+    <union-subclass name="ChequePayment" table="CHEQUE_PAYMENT"> 
+        ... 
+    </union-subclass> 
+</class> 
+3 tables are mapped to the subclasses. Each table defines columns for all properties of the class, including inherited properties. The limitation of this strategy is that if a property is mapped on the superclass, the column name must be the same on all subclass tables. Another limitation is that the identity generator strategy is not allowed in union subclass inheritance. The primary key has to be shared across all unioned subclasses of a hierarchy. If the superclass is abstract, then the mapping must show it as abstract with abstract="true". If it is not abstract, an additional table is required to hold the instances of the superclass.
+===============================================================================UPTO THIS UPLOADED TO GLCA DRIVE=============================================

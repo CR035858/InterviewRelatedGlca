@@ -1,0 +1,601 @@
+=========================================[  DESCRIPTIVE QUESTIONS  ]===============================================================
+-------------------------------------------------[  SERVLETS: ]------------------------------------------------------------------
+1) 
+Q) 
+How many objects of a servlet is created?
+A) 
+Only one object at the time of first request by servlet or web container.
+--------------------------------------------------------------------------------------------------------
+
+2) 
+Q) 
+What is the life-cycle of a servlet?
+A)
+a) Servlet is loaded
+b) servlet is instantiated
+c) servlet is initialized
+d) service the request
+e) servlet is destroyed
+--------------------------------------------------------------------------------------------------------
+3) 
+Q) 
+What are the life-cycle methods for a servlet?
+A)
+a) public void init(ServletConfig config)	----- It is invoked only once when first request comes for the servlet. It is used to initialize the servlet.
+b) public void service(ServletRequest request,ServletResponse)
+throws ServletException,IOException 		----- It is invoked at each request.The service() method is used to service the request.
+c) public void destroy()			----- It is invoked only once when servlet is unloaded.
+--------------------------------------------------------------------------------------------------------
+4)
+Q)
+Who is responsible to create the object of servlet?
+A)
+The web container or servlet container.
+--------------------------------------------------------------------------------------------------------
+5)
+Q)
+What is difference between Get and Post method?
+A)
+		Get									Post
+1) Limited amount of data can be sent because data is sent in header.	Large amount of data can be sent because data is sent in body.
+2) Not Secured because data is exposed in URL bar.			Secured because data is not exposed in URL bar.
+3) Can be bookmarked							Cannot be bookmarked
+4) Idempotent								Non-Idempotent
+5) It is more efficient and used than Post				It is less efficient and used
+--------------------------------------------------------------------------------------------------------
+6)
+Q)
+What is difference between PrintWriter and ServletOutputStream?
+A)
+PrintWriter is a character-stream class where as ServletOutputStream is a byte-stream class. The PrintWriter class can be used to write only character-based information whereas ServletOutputStream class can be used to write primitive values as well as character-based information.
+--------------------------------------------------------------------------------------------------------
+7)
+Q)
+What is difference between GenericServlet and HttpServlet?
+A)
+HttpServlet provides additional functionalities such as state management etc.
+Generic Servlet							HTTP Servlet
+Protocol Independent				Protocol Specific
+Belongs to javax.servlet package		Belongs to javax.servlet.http package
+supports only service() method 			supports doGet(), doPost(), doHead() methods
+--------------------------------------------------------------------------------------------------------
+8)
+Q)
+What is servlet collaboration/Inter Servlet Communication?
+A)
+When one servlet communicates to another servlet, it is known as servlet collaboration. There are many ways of servlet collaboration:
+	RequestDispacher interface (Include/Forward)
+	HttpServletResponse - sendRedirect() method etc.
+--------------------------------------------------------------------------------------------------------
+9)
+Q)
+What is the purpose of RequestDispatcher Interface?
+A)
+The RequestDispacher interface provides the facility of dispatching the request to another resource it may be html, servlet or jsp. This interceptor can also be used to include the content of antoher resource.
+--------------------------------------------------------------------------------------------------------
+10)
+Q)
+How a jsp can be called from the servlet?
+A)
+one of the ways is is to use RequestDispatcher interface for example:
+
+RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");  
+rd.forward(request,response);  
+--------------------------------------------------------------------------------------------------------
+11)
+Q)
+Difference between forward() method and sendRedirect() method ?
+A)
+		forward() method								sendRedirect() method
+1) forward() sends the same request to another resource.	1) sendRedirect() method sends new request always because it uses the URL bar of the browser.
+2) forward() method works at server side.			2) sendRedirect() method works at client side.
+3) forward() method works within the server only.		3) sendRedirect() method works within and outside the server.
+--------------------------------------------------------------------------------------------------------
+12)
+Q)
+What is idempotent in HTTP methods?
+A)
+Idempotent methods are HTTP methods that have the same effect on the server, regardless of how many times they are executed. For example, GET, PUT, and DELETE are idempotent methods, because they always return the same resource, update the same resource, or remove the same resource, respectively.
+--------------------------------------------------------------------------------------------------------
+13)
+Q)
+What is difference between ServletConfig and ServletContext?
+A)
+The container creates object of ServletConfig for each servlet whereas object of ServletContext is created for each web application.
+ServletConfig									ServletContext
+ServletConfig is a unique object per servlet.				ServletContext is a unique object for a complete application.
+ServletConfig is used to provide the init parameters to the servlet.	ServletContext is used to provide the application-level init parameters that 									all other servlets can use.
+Attributes in the ServletConfig object cannot be set.			We can set the attributes in ServletContext that other servlets can use.
+--------------------------------------------------------------------------------------------------------
+14)
+Q)
+What is Session Tracking?
+Session simply means a particular interval of time.
+A)
+Session Tracking is a way to maintain state of an user.
+Http protocol is a stateless protocol.Each time user requests to the server, server treats the request as the new request.
+So we need to maintain the state of an user to recognize to particular user.
+--------------------------------------------------------------------------------------------------------
+15)
+Q) 
+What are Cookies?
+A)
+A cookie is a small piece of information that is persisted between the multiple client requests. 
+A cookie has a name, a single value, and optional attributes such as a comment, path and domain qualifiers, a maximum age, and a version number.
+--------------------------------------------------------------------------------------------------------
+16)
+Q)
+What is difference between Cookies and HttpSession?
+A)
+Cookie works at client side whereas HttpSession works at server side.
+--------------------------------------------------------------------------------------------------------
+17)
+Q)
+What is war file?
+A)
+A war (web archive) file specifies the web elements. A servlet or jsp project can be converted into a war file. Moving one servlet project from one place to another will be fast as it is combined into a single file.
+--------------------------------------------------------------------------------------------------------
+18)
+Q)
+How to create war file?
+A)
+The war file can be created using jar tool found in jdk/bin directory. If you are using Eclipse or Netbeans IDE, you can export your project as a war file.
+To create war file from console, you can write following code.
+jar -cvf abc.war * 
+Now all the files of current directory will be converted into abc.war file.
+--------------------------------------------------------------------------------------------------------
+19)
+Q)
+What are the annotations used in Servlet 3?
+A)
+There are mainly 3 annotations used for the servlet.
+
+@WebServlet : for servlet class.
+@WebListener : for listener class.
+@WebFilter : for filter class.
+
+--------------------------------------------------------------------------------------------------------
+20)
+Q)
+Which event is fired at the time of project deployment and undeployment?
+A)
+ServletContextEvent.
+--------------------------------------------------------------------------------------------------------
+21)
+Q)
+Which event is fired at the time of session creation and destroy?
+A)
+HttpSessionEvent.
+--------------------------------------------------------------------------------------------------------
+22)
+Q)
+Which event is fired at the time of setting, getting or removing attribute from application scope?
+A)
+ServletContextAttributeEvent.
+--------------------------------------------------------------------------------------------------------
+23)
+Q)
+What is the use of welcome-file-list?
+A)
+The welcome-file-list element of web-app, is used to define a list of welcome files. Its sub element is welcome-file that is used to define the welcome file.
+
+It is used to specify the welcome file for the project.
+A welcome file is the file that is invoked automatically by the server, if you don't specify any file name.
+
+By default server looks for the welcome file in following order:
+
+welcome-file-list in web.xml
+index.html
+index.htm
+index.jsp
+--------------------------------------------------------------------------------------------------------
+24)
+Q)
+What is the use of attribute in servlets?
+A)
+Attribute is a map object that can be used to set, get or remove in request, session or application scope. It is mainly used to share information between one servlet to another.
+
+==========================================================================================================================================================
+-------------------------------------------------------------[ JSP ]------------------------------------------------------------------
+25)
+Q)
+What is JSP?
+A)
+JSP stands for Java Server Pages. This technology is used to create dynamic web pages in the form of HyperText Markup Language (HTML). They have embedded Java code pieces in them. They are an extension to the Servlet Technology and generate Servlet from a page. It is common to use both servlets and JSP pages in the same web apps.
+--------------------------------------------------------------------------------------------------------
+26)
+Q)
+How does JSP work?
+A)
+The JSP container has a special servlet called the page compiler. All HTTP requests with URLs that match the .jsp file extension are forwarded to this page compiler by the configuration of the servlet container. The servlet container is turned into a JSP container with this page compiler. When a .jsp page is first called, the page compiler parses and compiles the .jsp page into a servlet class. The JSP servlet class is loaded into memory on the successful compilation. For the subsequent calls, the servlet class for that .jsp page is already in memory. Hence, the page compiler servlet will always compare the timestamp of the JSP servlet with the JSP page. If the .jsp page is more current, recompilation is necessary. With this process, once deployed, JSP pages only go through the time-consuming compilation process once.
+--------------------------------------------------------------------------------------------------------
+27)
+Q)
+How does JSP Initialization take place?
+A)
+When a container loads a JSP, it invokes the jspInit() method before servicing any requests.
+
+public void jspInit(){
+  // Initialization code...
+}
+--------------------------------------------------------------------------------------------------------
+28)
+Q)
+What are the life-cycle methods for a JSP?
+A)
+	Method										Description
+1) public void jspInit()						It is invoked only once, same as init method of the servlet.
+2) public void _jspService(ServletRequest request,ServletResponse)	It is invoked at each request, same as service() method of the servlet.
+throws ServletException,IOException
+3) public void jspDestroy()						It is invoked only once, same as destroy() method of the servlet.
+--------------------------------------------------------------------------------------------------------
+29)
+Q)
+What are Implicit JSP Objects?
+A)
+Variable Name		Java Type					Description
+request		javax.servlet.http.HttpServletRequest	The request object is used to request information like a parameter, header information, server name, etc.
+response	javax.servlet.http.HttpServletResponse	The response is an instance of a class that represents the response that can be given to the client
+pageContext	javax.servlet.jsp.PageContext		This is used to get, set, and remove the attributes from a particular scope.
+session		javax.servlet.http.HttpSession		This is used to get, set, and remove attributes to session scope and also used to get session information.
+application	javax.servlet.ServletContext		This is used to get the context information and attributes in JSP.
+out		javax.servlet.jsp.JspWriter		This is an implicit object, used to write the data to the buffer and send output to the client in response.
+config		javax.servlet.ServletConfig		Config is used to get the initialization parameter in web.xml
+page		java.lang.Object			This implicit variable holds the currently executed servlet object for the corresponding JSP.
+exception	java.lang.Throwable			Exception which is the implicit object of the throwable class is used for exception handling in JSP.
+--------------------------------------------------------------------------------------------------------
+30)
+Q)
+What are the types of elements with Java Server Pages (JSP)?
+A)
+The three types of elements with Java Server Pages (JSP) are directive, action, and scripting elements.
+Following are the Directive Elements:
+Element				Description
+<%@ page ... %>		Defines page-dependent attributes, such as scripting language, error page, and buffering requirements.
+<%@ include ... %>	Includes a file during the translation phase.
+<%@ taglib ... %>	Declares a tag library, containing custom actions, used on the page.
+-------------------
+The Action elements are:
+
+Element					Description
+<jsp:useBean>		This is for making the JavaBeans component available on a page.
+<jsp:getProperty>	This is used to get a property value from a JavaBeans component and to add it to the response.
+<jsp:setProperty>	This is used to set a value for the JavaBeans property.
+<jsp:include>		This includes the response from a servlet or JSP page during the request processing phase.
+<jsp:forward>		This is used to forward the processing of a request to a JSP page or servlet.
+<jsp:param>		This is used for adding a parameter value to a request given to another servlet or JSP page by using <jsp:include> or <jsp:forward>
+<jsp:plugin>		This is used to generate HTML that contains the proper client browser-dependent elements which are used to execute an Applet with Java Plugin software.
+-------------------
+And lastly, the Scripting elements are:
+
+Element			Description
+<% ... %>	Scriptlet used to embed scripting code.
+<%= ... %>	Expression, used to embed Java expressions when the result shall be added to the response. Also used as runtime action attribute values.
+<%! ... %>	Declaration used to declare instance variables and methods in the JSP page implementation class.
+<%-- --%> 	JSP Comments (Server side)
+--------------------------------------------------------------------------------------------------------
+31)
+Q)
+What is JSP Expression Language (EL)?
+A)
+Expression Language (EL) was introduced in JSP 2.0. It is a mechanism that simplifies the accessibility of the data stored in Javabean components and other objects like request, session, and application, etc. There are many operators in JSP that are used in EL like arithmetic and logical operators to perform an expression
+--------------------------------------------------------------------------------------------------------
+32)
+Q)
+What is JSTL?
+A)
+JSTL stands for Java server pages standard tag library. It is a collection of custom JSP tag libraries that provide common functionality for web development.
+Following are some of the properties of JSTL:
+Code is Neat and Clean.
+Being a Standard Tag, it provides a rich layer of the portable functionality of JSP pages.
+It has Automatic Javabeans Introspection Support. The JSTL Expression language handles JavaBean code very easily. We don't need to downcast the objects, which have been retrieved as scoped attributes.
+Easier for humans to read and easier for computers to understand.
+--------------------------------------------------------------------------------------------------------
+33)
+Q)
+Which methods are used for reading form data using JSP?
+JSP is used to handle the form data parsing automatically. It dies so by using the following methods depending on the situation:
+A)
+getParameter() − To get the value of a form parameter, call the request.getParameter() method.
+getParameterValues() − If a parameter appears more than once and it returns multiple values, call this method.
+getParameterNames() − This method is used if, in the current request, you want a complete list of all parameters.
+getInputStream() − This method is used for reading binary data streams from the client.
+
+
+-----------------------------------------------------------SERVLET---------------------------------------------
+34)
+Q)
+What does the following code snippet in an XML file mean?
+<load-on-startup>1</load-on-startup>
+Ans: Whenever a request for a servlet is placed, then the servlet container will initialize the servlet and load it. This process is defined in our config file called web.xml. But, by default, Container will not initialize the servlet, when the context is loaded. This can be achieved by defining the servlet in a pre-initialization procedure syntax <load-on-startup>1</load-on-startup>. Then, the servlet that we have defined in this tag will be initialized at the start when the context gets loaded before even getting the request.
+--------------------------------------------------------------------------------------------------------
+35)
+Q)
+How to get the server information in a servlet?
+Ans: Yes, we can retrieve the information of a server in a servlet. We can use below code snippet to get the servlet information in a servlet through servlet context object.
+
+getServletContext().getServerInfo()
+-------------------------------------------------------------JSP-------------------------------------------
+36)
+Q)
+What is the difference between include directive and include action tag?
+Ans:
+Both include directives and include action tags are used to add a file into the existing JSP. The difference is in the way they include the file.
+
+Include directive includes the file during translation stage of life cycle whereas, the include action includes the file at runtime.
+If the included file is changed but not the JSP which is including it then the changes will not reflect if the include directive is used. Because jsp is not changed and that means it will not be translated for the request. For such a station an action tag has to be used.
+Syntax difference: 
+Include directive: <%@ include file=”file_name” %> and 
+
+include action: <jsp:include page=”file_name” />.
+---------------------------------------------------SERVLET------------------------------------------------------
+37)
+Q)
+Explain What is servlet mapping?
+Ans:
+Ans: Servlet mapping is a process of defining an association between a URL pattern and a servlet. 
+The mapping is used to map requests to Servlets.
+-------------------------------------------------------------JSP-------------------------------------------
+38)
+Q)
+ Explain the JSP life cycle
+Ans:
+Any JSP file goes through 7 stages and that is called life cycle phases:
+Phase				Description
+Translation: 		JSP first goes to the Container, where it is parsed to generate servlet code. If the servlet class is older than JSP, then 			the Container parses it again. Else it is skipped.
+Compilation: 		After translation, Container compiles JSP source code to create a class file.
+Loading: 		The Container loads the compiled class into memory.
+Instantiation: 		Container invokes constructor that has zero arguments to instantiate it. 
+Initialization: 	Container Calls the jspInit() method to initialize the servlet instance. After this, JSP can handle the client request.
+Request Processing: 	After initialization, new threads are created with the _jspService() method. This method will have request and response 			object parameters. Each thread will process client requests the same as the servlet.
+Destroy: 		After the processing is over, the JSP class is unloaded from memory using the jspDestroy() method.
+--------------------------------------------------------------------------------------------------------
+39)
+Q)
+What are the attributes of page directives.
+Ans:
+Session: 	It shows if a session data is available to the page.
+Import: 	it shows packages that are imported.
+isELIgnored: 	It shows whether EL expressions are ignored when JSP translates into a servlet.
+contentType: 	it allows the user to specify the content type of page.
+--------------------------------------------------------------------------------------------------------
+40)
+Q)
+What is Translation Phase?
+Ans:
+JSP engine translates and compiles a JSP file to a servlet. This servlet moves to the execution phase where requests and responses are handled. They are compiled for the first time they are accessed unless manually compiled ahead of time. The manual or explicit compilation is useful for long and convoluted programs.
+--------------------------------------------------------------------------------------------------------
+41)
+How does JSP processing take place?
+
+The JSP page is turned into a servlet for all the JSP elements to be processed by the server. Then the servlet is executed. The servlet container and the JSP container—are often combined into one package under the name “web container”.
+
+In the translation phase, the JSP container is responsible for converting the JSP page into a servlet and compiling the servlet. This is used to automatically initiate the translation phase for a page when the first request for the page is received.
+
+In the “request processing” phase, the JSP container is also responsible for invoking the JSP page implementation class to process each request and generate the response.
+See WORD DOC
+---------------------------------------------------[  SERVLETS  ]------------------------------------------------------
+42)
+What is the use of welcome-file-list?
+
+Ans: It is used to specify the welcome file for the project.
+---------------------------------------------------------------------------------------------------------
+43)
+How PrintWriter is different from ServletOutputStream?
+
+Ans: PrintWriter is basically a character-stream class. On the other hand, ServletOutputStream is a byte-stream class. 
+The PrintWriter class can be used to write only character-based information whereas ServletOutputStream class can be used to 
+write primitive values as well as character-based information.
+---------------------------------------------------------------------------------------------------------
+44)
+Explain What is servlet mapping?
+
+Ans: Servlet mapping is a process of defining an association between a URL pattern and a servlet. The mapping is used to map requests to Servlets.
+---------------------------------------------------------------------------------------------------------
+45)
+What is the difference between a Generic Servlet and HTTP Servlet?
+
+Ans: A common feature between Generic Servlet and HTTP Servlet is both these Classes are Abstract Classes. But, they do have differences between them which discussed as follows
+
+Generic Servlet						HTTP Servlet
+Protocol Independent					Protocol Specific
+Belongs to javax.servlet package		Belongs to javax.servlet.http package
+supports only service() method 			supports doGet(), doPost(), doHead() methods
+---------------------------------------------------------------------------------------------------------
+46)
+What is the use of RequestDispatcher Interface?
+
+Ans: The RequestDispatcher interface defines the object that receives the request from the client and dispatches it to the resources such as a servlet, JSP, HTML file. The RequestDispatcher interface has the following two methods:
+
+
+public void forward(ServletRequest request, ServletResponse response)
+Forwards request from one servlet to another resource like servlet, JSP, HTML etc.
+
+
+public void include(ServletRequest request, ServletResponse response)
+Includes the content of the resource such as a servlet, JSP, and HTML in the response.
+---------------------------------------------------------------------------------------------------------
+47)
+Can a JSP be called using a Servlet?
+
+Ans: Yes, Servlet can call a JSP using RequestDispatcher interface.
+
+Example:
+RequestDispatcher reqdis=request.getRequestDispatcher("log.jsp");
+reqdis.forward(request,response);
+---------------------------------------------------------------------------------------------------------
+48)
+Explain the Servlet Filter.
+
+Ans: A Filter is defined as a pluggable object that is invoked either at the pre-processing or post-processing of a request.
+---------------------------------------------------------------------------------------------------------
+49)
+Why do we need Servlet Filter?
+
+Ans: We need Servlet Filters for the following reasons:
+
+Logging the request parameters to log files.
+Authentication and Authorization of the request for the needed resources.
+Formatting of the request body/header before sending it to the servlet.
+Compressing response data sent to the client.
+Change the response by adding some cookies and header information.
+---------------------------------------------------------------------------------------------------------
+50)
+ What is the use of HttpServletRequestWrapper and HttpServletResponseWrapper?
+
+Ans: Both HttpServletRequestWrapper and HttpServletResponseWrapper classes are used to help developers with a custom implementation of a servlet request and response types. Programmers can extend these classes and override only the specific methods that they need to implement for customized request and response objects.
+---------------------------------------------------------------------------------------------------------
+51)
+How do you get the IP address of the client in servlet?
+
+Ans: We can use the following code to get the client IP address in servlet.
+request.getRemoteAddr()
+ 
+---------------------------------------------------------------------------------------------------------
+52)
+How is an application exception handling is done using a Servlet?
+
+Ans: The doGet() method and doPost() method throw the ServletException and IOException. The browser understands only HTML. Hence, when an exception os is thrown by an application, then, the servlet container processes the exception and generates an HTML response. Same happens with other errors such as error 404.
+
+Servlet API supports customized Exception and Error Handler servlets that can be configured in the deployment descriptor, the purpose of these servlets is to handle the Exception thrown by application and send HTML response that is useful for the user. We can provide a link to the application home page or the details that let the user know what went wrong.
+
+The Web.XML configuration is as follows:
+
+
+<error-page>
+    <error-code>404</error-code>
+    <location>/AppExceptionHandler</location>
+</error-page>
+<error-page>
+    <exception-type>javax.servlet.ServletException</exception-type>
+    <location>/AppExceptionHandler</location>
+</error-page>
+ 
+---------------------------------------------------------------------------------------------------------
+53)
+What is the difference between Context Parameter and Context Attribute?
+
+Ans: The main difference is, Context Parameter is a value stored in the deployment descriptor, which is the web.xml and is loaded during the deployment process. On the other hand, Context Attribute is the value which is set dynamically and can be used throughout the application.
+---------------------------------------------------------------------------------------------------------
+54)
+Can you refresh servlet in client and server-side automatically?
+
+Ans: Yes, There are a couple of primary ways in which a servlet can be automatically refreshed. One way is to add a “Refresh” response header containing the number of seconds after which a refresh should occur. The TestServlet class below shows an example of this.
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+ 
+public class TestServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+      private static final long serialVersionUID = 1L;
+      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            performTask(request, response);
+      }
+      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+      IOException {
+            performTask(request, response);
+      }
+      private void performTask(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+      IOException {
+            response.setContentType("text/html");
+            response.addHeader("Refresh", "5");
+            PrintWriter out = response.getWriter();
+            out.println("TestServlet says hi at " + new Date());
+      }
+}
+
+---------------------------------------------------------------------------------------------------------
+55)
+What is Pure Servlet?
+
+Ans: Pure servlet is known as a servlet that is used to create java objects that can be implemented from javax.servlet.Servlet interface.
+---------------------------------------------------------------------------------------------------------
+56)
+What is different between web server and application server?
+Ans:
+A web server responsibility is to handler HTTP requests from client browsers and respond with HTML response. A web server understands HTTP language and runs on HTTP protocol. Apache Web Server is kind of a web server and then we have specific containers that can execute servlets and JSPs known as the servlet container, for example, Tomcat. Application Servers provide additional features such as Enterprise JavaBeans support, JMS Messaging support, Transaction Management, etc. So we can say that the Application server is a web server with additional functionalities to help developers with enterprise applications.
+
+MORE INFO
+
+Application Server vs Web Server
+1. Application Server supports distributed transactions and EJB. While Web Server only supports Servlets and JSP.
+
+2. Application Servers can contain web servers in them. most of App server e.g. JBoss or WAS has Servlet and JSP container.
+
+3. Though it's not limited to Application Server they used to provide services like Connection pooling, Transaction management, messaging, clustering, load balancing, and persistence. Now Apache tomcat also provides connection pooling.
+
+4. In terms of the logical difference between the web server and application server. the webserver is supposed to provide http protocol level service while the application server provides support to web service and exposes business-level service e.g. EJB.
+
+
+---------------------------------------------------------------------------------------------------------
+56)
+Which HTTP method is non-idempotent?
+Ans:
+An HTTP method is said to be idempotent if it returns the same result every time. HTTP methods GET, PUT, DELETE, HEAD, and OPTIONS are idempotent method and we should implement our application to make sure these methods always return the same result. HTTP method POST is non-idempotent method and we should use post method when implementing something that changes with every request. For example, to access an HTML page or image, we should use GET because it will always return the same object but if we have to save customer information to the database, we should use the POST method. Idempotent methods are also known as safe methods and we don’t care about the repetitive request from the client for safe methods.
+---------------------------------------------------------------------------------------------------------
+57)
+Are Servlets Thread Safe? How to achieve thread-safety in servlets?
+Ans:
+HttpServlet init() method and destroy() method are called only once in the servlet life cycle, so we don't need to worry about their synchronization. But service methods such as doGet() or doPost() are getting called in every client request and since servlet uses multithreading, we should provide thread safety in these methods. If there are any local variables in service methods, we don't need to worry about their thread-safety because they are specific to each thread but if we have a shared resource then we can use synchronization to achieve thread-safety in servlets when working with shared resources. The thread safety mechanisms are similar to thread safety in standalone java application, read more about them at [**Thread Safety in Java**](/community/tutorials/thread-safety-in-java).
+---------------------------------------------------------------------------------------------------------
+58)
+How to get the server information in a servlet?
+We can use below code snippet to get the servlet information in a servlet through servlet context object. 
+`getServletContext().getServerInfo()`
+---------------------------------------------------------------------------------------------------------
+59)
+Write a servlet to upload file on server.
+Ans:
+File Upload and Download and common tasks in a java web application. Unfortunately Servlet API doesn't provide easy methods to upload file on server, so we can use Apache FileUpload jar to make our life easier. Please read [**File Upload Servlet**](/community/tutorials/servlet-upload-file-download-example) post that provide all the necessary details with example program to upload and download file using servlets.
+---------------------------------------------------------[JSP]------------------------------------------------
+60)
+What are the different scope values for the <jsp:useBean> tag?
+Ans:
+There are 4 values:
+page
+request
+session
+application
+---------------------------------------------------------------------------------------------------------
+61)
+What is the difference between ServletContext and PageContext?-
+Ans:
+ServletContext gives the information about the container whereas PageContext gives the information about the Request.
+---------------------------------------------------------------------------------------------------------
+62)
+How many tags are provided in JSTL?
+Ans:
+There are 5 type of JSTL tags.
+core tags
+sql tags
+xml tags
+internationalization tags
+functions tags
+---------------------------------------------------------------------------------------------------------
+63)
+How can a thread safe JSP page be implemented?
+Ans:
+It can be done by having them implemented by the SingleThreadModel Interface. Add <%@page isThreadSafe=”false” %> directive in the JSP page.
+---------------------------------------------------------------------------------------------------------
+64)
+ How can information from one JSP be passed to another JSP?
+Ans:
+The tag <Jsp:param> allows us to pass information between multiple Jsp’s.
+---------------------------------------------------------------------------------------------------------
+65)
+What is JSESSIONID in Java? When does JSESSIONID gets created? 
+Ans:
+The JSESSIONID is a cookie that is used to manage sessions in Java web applications. JSESSIONID is created by Web Container whenever a new session is created.  
+
+Read more: https://www.java67.com/2012/10/servlet-jsp-interview-questions-answer-faq-experience.html#ixzz8L1NDVqz6
+---------------------------------------------------------------------------------------------------------
+======================================================================UPTO THIS UPLOADED TO GLCA DRIVE=======================================================
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+
